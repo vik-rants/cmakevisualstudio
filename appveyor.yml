@@ -1,5 +1,6 @@
 # Specify version format
-version: "{build2}"
+#Latest
+version: 2.0."{build}"
 
 # Operating system (build VM template)
 os: Visual Studio 2015
@@ -9,6 +10,10 @@ platform:
   - Win32
   - x64
 
+ # C++ Compiler
+image: Visual Studio 2017 
+  
+  
 # specify custom environment variables
 environment:
   MSVC_DEFAULT_OPTIONS: ON
