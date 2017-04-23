@@ -11,6 +11,12 @@ version: 1.0."{build}"
 branches:
   only:
     - master
+    
+    
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+  
 
 #---------------------------------#
 #    environment configuration    #
@@ -38,18 +44,47 @@ environment:
 #  GITHUB_ACCESS_TOKEN:
  #   secure: CrxPDgxTKC9ZRvFjttpRPO+e1DT8s0Zkk9HrAmHOIzDkOfFbbu1iTm/yJjZ2eDcd
 
- # clone directory
+ 
+ 
+# clone directory
 clone_folder: C:\projects\cmakevisualstudio\ci  
 
-init:
-  - git config --global core.autocrlf true
-
+# scripts that run after cloning repository
 install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
-  - build\premake5.exe --file=build\scripts\LLVM.lua download_llvm
-
+  
+  
 build_script:
-  - build\premake5.exe --file=build\premake5.lua %VS_VERSION%
-  - msbuild %BUILD_PATH%\CppSharp.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal
-   
+
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - dir
+  # create folder for an out-of-source-tree build: "c:\projects\build"
+  
+  - cd.. 
+  - mkdir build
+  - cd build
+  
+  # generate build script
+  - >
+    cmake %APPVEYOR_BUILD_FOLDER%\src
+    -G "%generator%" 
+    -DCMAKE_INSTALL_PREFIX=./trials
+    
+  # build
+  - cmake --build . --target ALL_BUILD --config %configuration% -- /nologo /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  
+  # install
+  - cmake --build . --target INSTALL --config %configuration% -- /nologo
+  # package (with cpack)
+  #- cmake --build ./build --target PACKAGE --config %configuration% -- /nologo
+  
+
+ # Deploy to GitHub Releases
+  - provider: GitHub
+    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: master                # release from master branch only
+      appveyor_repo_tag: true       # deploy on tag push only  
     
