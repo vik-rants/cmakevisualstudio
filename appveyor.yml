@@ -1,68 +1,61 @@
+ # C++ Compiler
+image: Visual Studio 2015
+
 # Specify version format
 #Latest
-version: 2.0."{build}"
+version: 1.0."{build}"
 
-# Operating system (build VM template)
-os: Visual Studio 2015
-
-# build platform, i.e. Win32 (instead of x86), x64, Any CPU. This setting is optional.
-platform: 
-  - Win32
-  - x64
-
- # C++ Compiler
-image: Visual Studio 2017 
-  
-  
-# specify custom environment variables
-environment:
-  MSVC_DEFAULT_OPTIONS: ON
-  BOOST_ROOT: C:\Libraries\boost_1_59_0
-  BOOST_LIBRARYDIR: C:\Libraries\boost_1_59_0\lib32-msvc-14.0
-
-# build configuration, i.e. Debug, Release, etc.
-configuration:
-  - Debug
-  - Release
-
-# scripts that are called at very beginning, before repo cloning
-init:
-  - cmd: cmake --version
-  - cmd: msbuild /version
 
 # clone directory
-clone_folder: C:\projects\pairwise\ci
+clone_folder: C:\projects\cmakevisualstudio\ci
 
 # branches to build
 branches:
   # whitelist
-  # only: 
-  #   - master
+   only: 
+    - master
+    
   # blacklist
   except:
     - gh-pages
+    
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
 
-# scripts that run after cloning repository
+matrix:
+  fast_finish: true
+
+os: Visual Studio 2015
+
+platform:
+  - x86
+
+configuration:
+  - Release
+
+environment:
+  VS_VERSION: vs2015
+  BUILD_PLATFORM: 'x32'
+  DEPS_PATH: '%APPVEYOR_BUILD_FOLDER%\deps'
+  LLVM_PATH: '%APPVEYOR_BUILD_FOLDER%\deps\llvm'
+  BUILD_PATH: '%APPVEYOR_BUILD_FOLDER%\build\%VS_VERSION%'
+  LIB_PATH: '%APPVEYOR_BUILD_FOLDER%\build\%VS_VERSION%\lib\%CONFIGURATION%_%BUILD_PLATFORM%'
+  ARTIFACT_NAME: '%APPVEYOR_PROJECT_NAME%-%APPVEYOR_REPO_TAG_NAME%-%VS_VERSION%-%BUILD_PLATFORM%.zip'
+#  GITHUB_ACCESS_TOKEN:
+ #   secure: CrxPDgxTKC9ZRvFjttpRPO+e1DT8s0Zkk9HrAmHOIzDkOfFbbu1iTm/yJjZ2eDcd
+
+   
+
+init:
+  - git config --global core.autocrlf true
+
 install:
-  - ps: cd C:\projects\pairwise\ci
-  - ps: .\appveyor_install.ps1
+  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+  - build\premake5.exe --file=build\scripts\LLVM.lua download_llvm
 
-# scripts to run before build
-before_build:
-  - cmd: cd C:\projects\pairwise
-  - cmd: md build
-  - cmd: cd build
-  # We generate project files for Visual Studio 15 because the boost binaries installed on the test server are for Visual Studio 15.
-  - cmd: if "%platform%"=="Win32" set CMAKE_GENERATOR_NAME=Visual Studio 14 2015
-  - cmd: if "%platform%"=="x64"   set CMAKE_GENERATOR_NAME=Visual Studio 14 2015 Win64
-  - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=%configuration% -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS="ON" -Durdfdom_DIR="%urdfdom_DIR%" -Durdfdom_headers_DIR="%urdfdom_headers_DIR%" -DDART_MSVC_DEFAULT_OPTIONS="%MSVC_DEFAULT_OPTIONS%" ..
-
-build: off
-#build:
-#  project: C:\projects\pairwise\build\pairwise.sln # path to Visual Studio solution or project
-#  parallel: true                           # enable MSBuild parallel builds
-#  verbosity: quiet                         # MSBuild verbosity level (quiet|minimal|normal|detailed)
-
-test: off
-#test_script:
-#  - cmd: ctest --build-config %configuration% --parallel 4 --output-on-failure
+build_script:
+  - build\premake5.exe --file=build\premake5.lua %VS_VERSION%
+  - msbuild %BUILD_PATH%\CppSharp.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /verbosity:minimal
+   
+    
