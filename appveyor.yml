@@ -1,55 +1,70 @@
  # C++ Compiler
-image:Visual Studio 2015
+image: Visual Studio 2015
 
 # Specify version format
-# Specify version format
-version: "{build}"
+#Latest
+version: 1.0."{build}"
 
-
-platform:
-- Win32
-- x64
 
 # branches to build
 
-# branches:
-#  only:
- # - master
+branches:
+  only:
+    - master
     
     
 # scripts that are called at very beginning, before repo cloning
 init:
   - git config --global core.autocrlf input
+  
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+matrix:
+  fast_finish: true
+
+os: Visual Studio 2015
+
+platform:
+  - x86
+
+configuration:
+  - Release
  
 # clone directory
- clone_folder: C:\projects\cmakevisualstudio\ci  
+clone_folder: C:\projects\cmakevisualstudio\ci  
 
 # scripts that run after cloning repository
- install:
-   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+install:
+  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
   
   
-# scripts to run before build
+build_script:
 
- before_build:
-
-  - cmd: cd %APPVEYOR_BUILD_FOLDER%
-  - cmd: mkdir build
-  - cmd: cd build
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - dir
+  # create folder for an out-of-source-tree build: "c:\projects\build"
   
-   # We generate project files for Visual Studio 13 only atm.  
-   - cmd: if "%platform%"=="Win32" set "CMAKE_GENERATOR_NAME=Visual Studio 12 2013"  
-   - cmd: if "%platform%"=="x64"   set "CMAKE_GENERATOR_NAME=Visual Studio 12 2013 Win64"   
-   - cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=%configuration% ..
+  - cd.. 
+  - mkdir build
+  - cd build
   
- build:
- 
-    project: C:\projects\cmakevisualstudio\Project1.sln  
+  # generate build script
+  - >
+    cmake %APPVEYOR_BUILD_FOLDER%\src
+    -G "%generator%" 
+    -DCMAKE_INSTALL_PREFIX=./trials
+    
+  # build
+  project: C:\projects\cmakevisualstudio\Project1.sln  
     
     # enable MSBuild parallel builds  
     parallel: true   
     # MSBuild verbosity level (quiet|minimal|normal|detailed)  
     verbosity: normal
+  
 
  # Deploy to GitHub Releases
   - provider: GitHub
