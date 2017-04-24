@@ -12,9 +12,9 @@ platform:
 
 # branches to build
 
- branches:
-  only:
-  - master
+# branches:
+#  only:
+ # - master
     
     
 # scripts that are called at very beginning, before repo cloning
