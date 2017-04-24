@@ -44,7 +44,7 @@ install:
 # scripts to run before build
 before_build:
 
-  - cmd: cd C:\projects\dart
+  - cmd: cd C:\projects\cmakevisualstudio
   - cmd: md build
   - cmd: cd build
   
