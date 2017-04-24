@@ -1,6 +1,4 @@
- # C++ Compiler
-image: Visual Studio 2015
-
+ 
 # Specify version format
 #Latest
 version: 1.0."{build}"
