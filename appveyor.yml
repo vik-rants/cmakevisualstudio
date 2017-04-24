@@ -32,7 +32,7 @@ configuration:
   - Release
  
 # clone directory
-clone_folder: C:\projects\cmakevisualstudio\ci  
+clone_folder: C:\projects\cmakevisualstudio
 
 # scripts that run after cloning repository
 install:
