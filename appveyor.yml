@@ -58,12 +58,7 @@ build_script:
     -DCMAKE_INSTALL_PREFIX=./trials
     
   # build
-  project: C:\projects\cmakevisualstudio\Project1.sln  
-    
-    # enable MSBuild parallel builds  
-    parallel: true   
-    # MSBuild verbosity level (quiet|minimal|normal|detailed)  
-    verbosity: normal
+  project: C:\projects\cmakevisualstudio\Project1.sln
   
 
  # Deploy to GitHub Releases
