@@ -17,10 +17,8 @@ platform:
     
     
 # scripts that are called at very beginning, before repo cloning
- init:
- - cmd: cmake --version
- - cmd: msbuild /version 
-   
+init:
+  - git config --global core.autocrlf input
  
 # clone directory
  clone_folder: C:\projects\cmakevisualstudio\ci  
