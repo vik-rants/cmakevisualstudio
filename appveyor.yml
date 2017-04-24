@@ -1,14 +1,13 @@
  # C++ Compiler
-image: Visual Studio 2015
+image:Visual Studio 2015
 
 # Specify version format
 #Latest
 version: 0.0."{build}"
 
-platform:  
- - Win32   
- - x64
-
+platform:
+- Win32
+- x64
 
 # branches to build
 
@@ -19,8 +18,8 @@ platform:
     
 # scripts that are called at very beginning, before repo cloning
  init:
-  -cmd: cmake --version   
-  -cmd: msbuild /version 
+  - cmd: cmake --version   
+  - cmd: msbuild /version 
    
  
 # clone directory
@@ -28,7 +27,7 @@ platform:
 
 # scripts that run after cloning repository
  install:
-  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
   
   
 # scripts to run before build
