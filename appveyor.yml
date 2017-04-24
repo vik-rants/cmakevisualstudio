@@ -58,7 +58,8 @@ build_script:
     -DCMAKE_INSTALL_PREFIX=./trials
     
   # build
-  project: C:\projects\cmakevisualstudio\Project1.sln
+  project: 
+  - C:\projects\cmakevisualstudio\Project1.sln
   
 
  # Deploy to GitHub Releases
