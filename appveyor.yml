@@ -2,9 +2,9 @@
 image:Visual Studio 2015
 
 # Specify version format
+# Specify version format
+version: "{build}"
 
-#Latest
-version: 1.0."{build}"
 
 platform:
 - Win32
