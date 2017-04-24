@@ -57,9 +57,12 @@ build_script:
     -G "%generator%" 
     -DCMAKE_INSTALL_PREFIX=./trials
     
-  # build
-  project: 
-  - C:\projects\cmakevisualstudio\Project1.sln
+ #build:
+  project: C:\projects\cmakevisualstudio\Project1.sln # path to Visual Studio solution or project
+  parallel: true                           # enable MSBuild parallel builds
+  verbosity: quiet                         # MSBuild verbosity level (quiet|minimal|normal|detailed)
+
+
   
 
  # Deploy to GitHub Releases
