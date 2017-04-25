@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
-project (cmakevisualstudio)
-add_executable(hello CXX)
+project (cmakevisualstudio CXX)
+add_executable(hello Project1.sln)
 
 #set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 #find_package(Eigen3 REQUIRED)
