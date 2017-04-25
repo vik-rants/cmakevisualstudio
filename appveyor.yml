@@ -72,6 +72,6 @@ before_build:
  
 build:
 
-  project: C:\projects\cmakevisualstudio\Project1.sln # path to Visual Studio solution or project
+  project: C:\projects\cmakevisualstudio\hello.sln # path to Visual Studio solution or project
   parallel: true                           # enable MSBuild parallel builds
   verbosity: quiet                         # MSBuild verbosity level (quiet|minimal|normal|detailed)
