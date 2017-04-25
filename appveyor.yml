@@ -23,11 +23,6 @@ branches:
   only:
     - master
     
-    
-# scripts that are called at very beginning, before repo cloning
-init:
-  - git config --global core.autocrlf input
-  
 
 #---------------------------------#
 #    environment configuration    #
@@ -39,7 +34,7 @@ matrix:
 os: Visual Studio 2015
 
 platform:
-  - x86
+  - x64
 
 configuration:
   - Release
@@ -49,7 +44,7 @@ clone_folder: C:\projects\cmakevisualstudio
 
 # scripts that run after cloning repository
 install:
-  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+  
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
@@ -62,16 +57,9 @@ before_build:
   - cmd: md build
   - cmd: cd build
   
-  # We generate project files for Visual Studio 12 because the boost binaries installed on the test server are for Visual Studio 12.
-  - cmd: cmake -G "Visual Studio 14 2015" ..
+  
+  - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - cmd: ls C:/projects/cmakevisualstudio/build
-  #- cmd: if "%platform%"=="Win32" set CMAKE_GENERATOR_NAME=Visual Studio 14 2015
-  #- cmd: if "%platform%"=="x64"   set CMAKE_GENERATOR_NAME=Visual Studio 14 2015 Win64
-  #- cmd: cmake -G "%CMAKE_GENERATOR_NAME%" -DCMAKE_BUILD_TYPE=%configuration% -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS="ON" -Durdfdom_DIR="%urdfdom_DIR%" -Durdfdom_headers_DIR="%urdfdom_headers_DIR%" -DDART_MSVC_DEFAULT_OPTIONS="%MSVC_DEFAULT_OPTIONS%" ..
+  
 
  
-build:
-
-  project: C:\projects\cmakevisualstudio\build\hello.vcxproj # path to Visual Studio solution or project
-  parallel: true                           # enable MSBuild parallel builds
-  verbosity: quiet                         # MSBuild verbosity level (quiet|minimal|normal|detailed)
