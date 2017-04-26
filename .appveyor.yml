@@ -64,7 +64,9 @@ build_script:
 after_build:
   -cmd: cd C:/projects/cmakevisualstudio/build
 
- artifacts:
+ 
+artifacts:
+
 # pushing all *.nupkg files in build directory recursively
   - path: '**\*.nupkg'
   
