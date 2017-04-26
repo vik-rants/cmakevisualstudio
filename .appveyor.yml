@@ -17,11 +17,6 @@
 version: 1.0."{build}"
 
 
-# branches to build
-
-branches:
-  only:
-    - master
     
 
 #---------------------------------#
