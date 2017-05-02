@@ -22,8 +22,6 @@ version: 1.0."{build}"
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
-environment:
-  GH_SECURE_TOKEN: YDQHtarsDgdMcmUt+x4Z+dLR3zzrE4IG1p8Wr58+oL34PsoKHn+plNGUdVQcMLDo
 build:
   verbosity: detailed
 
@@ -65,6 +63,7 @@ build_script:
   
 after_build:
   -cmd: cd C:/projects/cmakevisualstudio/build
+  -cmd: ls
 
   #- path: build\pairinteraction-install-windows-x86_64.exe
   
