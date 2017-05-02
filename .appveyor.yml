@@ -1,19 +1,10 @@
 # TODOs
-# 1) Clean up and minior improvements
-#    * Delete Project1.sln and add this filename to .gitignore
-#    * Change the filename appveyor.yml to .appveyor.yml
-#    * Let appveyor produce 64-bit builds
-#    * Remove unnecessary code from appveyor.yml - which code is really needed and why is it really needed?
+# 1) Minior improvements
 #    * Add an appveyor status badge (https://www.appveyor.com/docs/status-badges/), similar to the used travis status badge
 # 2) Make Eigen work
-#    * Change appveyor.yml so that the library Eigen can be used on appvoyer (probably, one has to make appveyor download Eigen from bitbuckets)
+#    * Change appveyor.yml so that the library Eigen can be used on appveyor (probably, one has to make appveyor download Eigen from bitbuckets)
 #    * Adapt the file cmake/FindEigen3.cmake so that the command "find_package(Eigen3 REQUIRED)" in the file CMakeLists.txt works on appveyor as well
 #    * Uncomment the Eigen example in Source.cpp and let it run
-# 3) Let appveyor publish the windows build to GitHub Releases (see https://www.appveyor.com/docs/deployment/github/)
-#    * Use similar settings as they are used in .travis.yml
-
-matrix:
-  fast_finish: true
 
 os: Visual Studio 2015
 
@@ -28,8 +19,7 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
 before_build:
-  - cmd: md build
-  - cmd: cd build
+  - cmd: md build && cd build
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
 
 build:
