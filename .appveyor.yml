@@ -22,6 +22,10 @@ version: 1.0."{build}"
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
+environment:
+  GH_SECURE_TOKEN: YDQHtarsDgdMcmUt+x4Z+dLR3zzrE4IG1p8Wr58+oL34PsoKHn+plNGUdVQcMLDo
+build:
+  verbosity: detailed
 
 matrix:
   fast_finish: true
@@ -74,8 +78,8 @@ deploy:
     #tag: test
     release: myproduct-v$(appveyor_build_version)
     description: 'Test deploy'
-    auth_token:
-        secure: $GH_SECURE_TOKEN
+    #auth_token:
+    #    secure: $GH_SECURE_TOKEN
     artifact:  C:/projects/cmakevisualstudio/build/hello.vcxproj
     draft: false
     prerelease: false
