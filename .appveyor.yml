@@ -13,7 +13,7 @@
 #    * Use similar settings as they are used in .travis.yml
 
 # Specify version format
-version: build
+#version: build
 
 init:
   - set TAG_NAME=%APPVEYOR_REPO_TAG_NAME%
@@ -47,10 +47,11 @@ build:
   verbosity: detailed
   
 after_build:
-  - cmd: ls C:/projects/cmakevisualstudio/build
+  - cmd: ls C:/projects/cmakevisualstudio/build/Release
+  - cmd: ls C:/projects/cmakevisualstudio/build/hello.dir
   
 artifacts:
-  - path: build/hello
+  - path: build/Release/hello.exe
     name: installer
 
 deploy:
