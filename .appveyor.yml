@@ -12,12 +12,6 @@
 # 3) Let appveyor publish the windows build to GitHub Releases (see https://www.appveyor.com/docs/deployment/github/)
 #    * Use similar settings as they are used in .travis.yml
 
-# Specify version format
-#version: build
-
-#init:
-#  - set TAG_NAME=%APPVEYOR_REPO_TAG_NAME%
-
 matrix:
   fast_finish: true
 
@@ -56,7 +50,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: $APPVEYOR_REPO_TAG_NAME
+    release: $(APPVEYOR_REPO_TAG_NAME)
     auth_token:
         secure: YDQHtarsDgdMcmUt+x4Z+dLR3zzrE4IG1p8Wr58+oL34PsoKHn+plNGUdVQcMLDo
     artifact:  installer
