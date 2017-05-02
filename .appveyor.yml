@@ -81,8 +81,9 @@ deploy:
     prerelease: false
     force_update: true
     on:
+      branch: master
       #appveyor_repo_tag: true  
-      skip_tags: true
+      #skip_tags: true
   
   
 
