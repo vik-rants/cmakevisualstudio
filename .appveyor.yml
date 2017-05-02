@@ -23,28 +23,29 @@ platform:
 configuration:
   - Release
  
-clone_folder: C:\projects\cmakevisualstudio
-
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
 before_build:
-  - cmd: cd C:\projects\cmakevisualstudio
   - cmd: md build
   - cmd: cd build
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
 
 build:
-  project: C:\projects\cmakevisualstudio\build\hello.vcxproj
+  project: build\hello.vcxproj
   parallel: true
   verbosity: minimal
+
+artifacts:
+  - path: build\Release\hello.exe
+    name: installer
 
 deploy:
   - provider: GitHub
     release: $(APPVEYOR_REPO_TAG_NAME)
     auth_token: $(GH_TOKEN)
-    artifact:  /build\Release\hello.exe/
+    artifact:  installer
     prerelease: true
     on:
       appveyor_repo_tag: true  
