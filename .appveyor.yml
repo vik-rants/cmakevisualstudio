@@ -75,7 +75,7 @@ deploy:
     release: myproduct-v$(appveyor_build_version)
     description: 'Test deploy'
     auth_token:
-        secure: $GH_TOKEN
+        secure: $GH_SECURE_TOKEN
     artifact:  C:/projects/cmakevisualstudio/build/hello.vcxproj
     draft: false
     prerelease: false
