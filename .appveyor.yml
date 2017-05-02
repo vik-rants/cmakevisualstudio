@@ -12,10 +12,6 @@
 # 3) Let appveyor publish the windows build to GitHub Releases (see https://www.appveyor.com/docs/deployment/github/)
 #    * Use similar settings as they are used in .travis.yml
 
-environment:
-  GH_SECURE_TOKEN:
-    secure: YDQHtarsDgdMcmUt+x4Z+dLR3zzrE4IG1p8Wr58+oL34PsoKHn+plNGUdVQcMLDo
-
 matrix:
   fast_finish: true
 
