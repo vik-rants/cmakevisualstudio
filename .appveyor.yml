@@ -64,10 +64,10 @@ after_build:
 
   #- path: build\pairinteraction-install-windows-x86_64.exe
   
-#artifacts:
+artifacts:
   
- #  -  path: build\hello.vcxproj
-#      name: installer
+  -  path: build\hello.vcxproj
+      name: installer
     
 deploy:
   - provider: GitHub
@@ -76,7 +76,7 @@ deploy:
     description: $(appveyor_repo_tag_name)
     auth_token:
       secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
-    artifact: /.*\.vcxproj/  
+    artifact: installer
     draft: false
     prerelease: false
     force_update: true
