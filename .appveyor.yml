@@ -71,9 +71,9 @@ after_build:
     
 deploy:
   - provider: GitHub
-    tag: $(appveyor_repo_tag_name)
-    release: $(appveyor_repo_tag_name)
-    description: $(appveyor_repo_tag_name)
+    tag: test
+    release: myproduct-v$(appveyor_build_version)
+    description: 'Test deploy'
     auth_token:
       secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
     artifact:  build/hello.vcxproj
