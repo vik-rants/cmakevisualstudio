@@ -74,8 +74,7 @@ deploy:
     #tag: test
     release: myproduct-v$(appveyor_build_version)
     description: 'Test deploy'
-    auth_token:
-      secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
+    auth_token: $GH_TOKEN
     artifact:  build/hello.vcxproj
     draft: false
     prerelease: false
