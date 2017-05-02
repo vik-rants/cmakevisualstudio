@@ -76,7 +76,7 @@ deploy:
     description: 'Test deploy'
     auth_token:
       secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
-    artifact:  build/hello.vcxproj
+    artifact:  C:/projects/cmakevisualstudio/build/hello.vcxproj
     draft: false
     prerelease: false
     force_update: true
