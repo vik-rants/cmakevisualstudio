@@ -67,7 +67,7 @@ after_build:
   #- path: build\pairinteraction-install-windows-x86_64.exe
   
 artifacts:
-   -  path: C:/projects/cmakevisualstudio/build/hello.vcxproj
+   -  path: build/hello.vcxproj
       name: installer
     
 deploy:
