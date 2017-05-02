@@ -37,6 +37,9 @@ configuration:
 # clone directory
 clone_folder: C:\projects\cmakevisualstudio
 
+init:
+- set TAG_NAME=%APPVEYOR_REPO_TAG_NAME%
+
 # scripts that run after cloning repository
 install:
   
@@ -59,7 +62,24 @@ build_script:
 after_build:
   -cmd: cd C:/projects/cmakevisualstudio/build
 
-
+artifacts:
+  #- path: build\pairinteraction-install-windows-x86_64.exe
+   - path: build\hello.vcxproj
+    name: installer
+    
+deploy:
+  - provider: GitHub
+    tag: $(appveyor_repo_tag_name)
+    release: $(appveyor_repo_tag_name)
+    description: $(appveyor_repo_tag_name)
+    auth_token:
+      secure: a77e6cbfab5943bf532be88c4923830462e9176e
+    artifact: installer
+    draft: false
+    prerelease: false
+    force_update: true
+    on:
+      appveyor_repo_tag: true  
   
   
 
