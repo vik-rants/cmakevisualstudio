@@ -39,20 +39,12 @@ build:
   project: C:\projects\cmakevisualstudio\build\hello.vcxproj
   parallel: true
   verbosity: minimal
-  
-after_build:
-  - cmd: ls C:/projects/cmakevisualstudio/build/Release
-  - cmd: ls C:/projects/cmakevisualstudio/build/hello.dir
-  
-artifacts:
-  - path: build/Release/hello.exe
-    name: installer
 
 deploy:
   - provider: GitHub
     release: $(APPVEYOR_REPO_TAG_NAME)
-    auth_token: $(GH_SECURE_TOKEN)
-    artifact:  installer
+    auth_token: $(GH_TOKEN)
+    artifact:  build/Release/hello.exe
     prerelease: true
     on:
       appveyor_repo_tag: true  
