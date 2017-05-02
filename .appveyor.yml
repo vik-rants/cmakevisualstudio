@@ -62,9 +62,8 @@ build_script:
   - cmd: ls C:/projects/cmakevisualstudio/build
   
 after_build:
-  -cmd: cd C:/projects/cmakevisualstudio/build
-  -cmd: ls
-
+  - cmd: cd C:/projects/cmakevisualstudio/build
+  - cmd: ls
   #- path: build\pairinteraction-install-windows-x86_64.exe
   
 #artifacts:
