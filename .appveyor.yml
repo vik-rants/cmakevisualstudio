@@ -75,7 +75,7 @@ deploy:
     release: $(appveyor_repo_tag_name)
     description: $(appveyor_repo_tag_name)
     auth_token:
-      secure: a77e6cbfab5943bf532be88c4923830462e9176e
+      secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
     artifact: /.*\.vcxproj/  
     draft: false
     prerelease: false
