@@ -72,7 +72,7 @@ build:
 
   project: C:\projects\cmakevisualstudio\build\hello.vcxproj # path to Visual Studio solution or project
   parallel: true                           # enable MSBuild parallel builds
-  verbosity: quiet                         # MSBuild verbosity level (quiet|minimal|normal|detailed)    
+  verbosity: detailed                         # MSBuild verbosity level (quiet|minimal|normal|detailed)    
 
 deploy:
   - provider: GitHub
