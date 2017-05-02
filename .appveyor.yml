@@ -62,10 +62,12 @@ build_script:
 after_build:
   -cmd: cd C:/projects/cmakevisualstudio/build
 
-artifacts:
   #- path: build\pairinteraction-install-windows-x86_64.exe
-   - path: build\hello.vcxproj
-    name: installer
+  
+#artifacts:
+  
+ #  -  path: build\hello.vcxproj
+#      name: installer
     
 deploy:
   - provider: GitHub
@@ -74,7 +76,7 @@ deploy:
     description: $(appveyor_repo_tag_name)
     auth_token:
       secure: a77e6cbfab5943bf532be88c4923830462e9176e
-    artifact: installer
+    artifact: /.*\.vcxproj/  
     draft: false
     prerelease: false
     force_update: true
