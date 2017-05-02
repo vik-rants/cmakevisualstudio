@@ -44,7 +44,7 @@ deploy:
   - provider: GitHub
     release: $(APPVEYOR_REPO_TAG_NAME)
     auth_token: $(GH_TOKEN)
-    artifact:  build/Release/hello.exe
+    artifact:  build\Release\hello.exe
     prerelease: true
     on:
       appveyor_repo_tag: true  
