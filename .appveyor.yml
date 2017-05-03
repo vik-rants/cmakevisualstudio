@@ -1,89 +1,43 @@
 # TODOs
-# 1) Clean up and minior improvements
-#    * Delete Project1.sln and add this filename to .gitignore
-#    * Change the filename appveyor.yml to .appveyor.yml
-#    * Let appveyor produce 64-bit builds
-#    * Remove unnecessary code from appveyor.yml - which code is really needed and why is it really needed?
+# 1) Minior improvements
 #    * Add an appveyor status badge (https://www.appveyor.com/docs/status-badges/), similar to the used travis status badge
 # 2) Make Eigen work
-#    * Change appveyor.yml so that the library Eigen can be used on appvoyer (probably, one has to make appveyor download Eigen from bitbuckets)
+#    * Change appveyor.yml so that the library Eigen can be used on appveyor (probably, one has to make appveyor download Eigen from bitbuckets)
 #    * Adapt the file cmake/FindEigen3.cmake so that the command "find_package(Eigen3 REQUIRED)" in the file CMakeLists.txt works on appveyor as well
 #    * Uncomment the Eigen example in Source.cpp and let it run
-# 3) Let appveyor publish the windows build to GitHub Releases (see https://www.appveyor.com/docs/deployment/github/)
-#    * Use similar settings as they are used in .travis.yml
-
-# Specify version format
-#Latest
-version: 1.0."{build}"
-
-
-    
-
-#---------------------------------#
-#    environment configuration    #
-#---------------------------------#
-
-matrix:
-  fast_finish: true
 
 os: Visual Studio 2015
 
-platform:
-  - x64
+platform: x64
 
-configuration:
-  - Release
+configuration: Release
  
-# clone directory
-clone_folder: C:\projects\cmakevisualstudio
-
-init:
-- set TAG_NAME=%APPVEYOR_REPO_TAG_NAME%
-
-# scripts that run after cloning repository
 install:
-  
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
-
-  
-# scripts to run before build
-build_script:
-
-  - cmd: cd C:\projects\cmakevisualstudio
-  - cmd: md build
-  - cmd: cd build
-  
-  
+before_build:
+  - cmd: md build && cd build
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
-  - cmd: ls C:/projects/cmakevisualstudio/build
-  
-after_build:
-  -cmd: cd C:/projects/cmakevisualstudio/build
 
-  #- path: build\pairinteraction-install-windows-x86_64.exe
-  
-#artifacts:
-  
- # -  path: build/hello.vcxproj
- #     name: installer
-    
+build:
+  project: build\hello.vcxproj
+  parallel: true
+  verbosity: minimal
+
+artifacts:
+  - path: build\Release\hello.exe
+    name: installer
+
 deploy:
   - provider: GitHub
-    #tag: test
-    release: myproduct-v$(appveyor_build_version)
-    description: 'Test deploy'
-    auth_token:
-      secure: DhK0524NGOT068RkuVF3X12wftCtflAEd7IhKzTdW88z5nMAfchddAgx8Hwj/AWw
-    artifact:  C:/projects/cmakevisualstudio/build/hello.vcxproj
-    draft: false
-    prerelease: false
+    release: $(APPVEYOR_REPO_TAG_NAME)
+    auth_token: $(GH_TOKEN)
+    artifact:  installer
+    prerelease: true
     force_update: true
     on:
-      branch: master
       appveyor_repo_tag: true  
-      #skip_tags: true
   
   
 
