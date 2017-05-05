@@ -1,3 +1,3 @@
-https://ci.appveyor.com/api/projects/status/euavv64fvgurynjp?svg=true
+https://ci.appveyor.com/api/projects/status/github/biswasvikrant/cmakevisualstudio?branch=master&svg=true
 # cmakevisualstudio
 # test
