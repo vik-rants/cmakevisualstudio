@@ -6,6 +6,21 @@
 #    * Adapt the file cmake/FindEigen3.cmake so that the command "find_package(Eigen3 REQUIRED)" in the file CMakeLists.txt works on appveyor as well
 ##   * Uncomment the Eigen example in Source.cpp and let it run
 
+## EIGEN CHANGS
+
+#  The latest stable release is Eigen 3.3.3.
+#   http://bitbucket.org/eigen/eigen/get/3.3.3.zip
+#  - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
+#  - cmd: 7z x eigen.zip -o"C:\projects" -y > nul
+#
+#   Changes to  be done in CMakeLists.txt..
+# http://stackoverflow.com/questions/12249140/find-package-eigen3-for-cmake
+# https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html
+#in before build
+#   - cmd: cmake -G "Visual Studio 14 2015 Win64" -D EIGEN3_INCLUDE_DIR=C:\projects\
+#
+
+
 os: Visual Studio 2015
 
 platform: x64
