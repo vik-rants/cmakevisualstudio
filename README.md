@@ -1,4 +1,4 @@
-# pairinteraction  [![Build status][appveyor-svg]
+# pairinteraction  ![Build status][appveyor-svg]
 
 
 # cmakevisualstudio
