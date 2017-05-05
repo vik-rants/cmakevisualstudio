@@ -4,7 +4,7 @@
 # 2) Make Eigen work
 #    * Change appveyor.yml so that the library Eigen can be used on appveyor (probably, one has to make appveyor download Eigen from bitbuckets)
 #    * Adapt the file cmake/FindEigen3.cmake so that the command "find_package(Eigen3 REQUIRED)" in the file CMakeLists.txt works on appveyor as well
-##    * Uncomment the Eigen example in Source.cpp and let it run
+#   * Uncomment the Eigen example in Source.cpp and let it run
 
 os: Visual Studio 2015
 
