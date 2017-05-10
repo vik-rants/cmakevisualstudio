@@ -11,6 +11,8 @@ include_directories(include)
 
 add_executable(hello ${src})
 
+set (EIGEN3_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
+
 message("Current dir is : ${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
