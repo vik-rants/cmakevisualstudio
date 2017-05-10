@@ -11,7 +11,7 @@ include_directories(include)
 
 add_executable(hello ${src})
 
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 find_package(Eigen3 REQUIRED)
 include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
 message("Found Eigen3 in: ${EIGEN3_INCLUDE_DIR}")
