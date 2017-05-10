@@ -11,7 +11,7 @@ include_directories(include)
 
 add_executable(hello ${src})
 
-set (EIGEN3_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
+set (EIGEN3_INCLUDE_DIR C:\projects\eigen-eigen-67e894c6cd8f\ )
 
 message("Current dir is : ${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
