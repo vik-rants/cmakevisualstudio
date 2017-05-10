@@ -41,7 +41,7 @@ before_build:
   - ps: ls C:/projects
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/cmake
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
-  - ps: ls ${PROJ_SOURCE_DIR}/cmake/
+  #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
   - ps: ls ${CMAKE_CURRENT_SOURCE_DIR}/cmake
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
