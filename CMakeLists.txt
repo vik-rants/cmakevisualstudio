@@ -11,6 +11,6 @@ include_directories(include)
 
 add_executable(hello ${src})
 
-list( APPEND CMAKE_MODULE_PATH "C:\projects\eigen-eigen-67e894c6cd8f\cmake")
+list( APPEND CMAKE_MODULE_PATH "C:/projects/eigen-eigen-67e894c6cd8f/cmake")
 find_package(Eigen3 REQUIRED)
 include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
