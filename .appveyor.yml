@@ -39,7 +39,7 @@ before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - ps: ls C:/projects
-  - ps: ls C:/projects/eigen-eigen-67e894c6cd8f
+  - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/cmake
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
