@@ -11,20 +11,22 @@ include_directories(include)
 
 add_executable(hello ${src})
 
-##Checking all variables
+###Search for packages and External Libraries###
+#Set the module path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-message("project source dir is : ${PROJECT_SOURCE_DIR}")
-message("cmake install prefix is : ${CMAKE_INSTALL_PREFIX}")
-message("cmake include path  is : ${CMAKE_INCLUDE_PATH}")
-message(STATUS "module path: ${CMAKE_MODULE_PATH} ${CMAKE_ROOT}")
-message("Current dir is : ${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-#SET(CMAKE_INSTALL_PREFIX "C:/projects/cmakevisualstudio")
-message("cmake install prefix after is : ${CMAKE_INSTALL_PREFIX}")
-#SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "C:/win32libs/boost/lib")
-###Search for package##
-
-#list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+# Find package : Eigen3 calling Findeigen.cmake
 find_package(Eigen3 REQUIRED)
 include_directories("${EIGEN3_INCLUDE_DIR}")
 message("Found Eigen3 in: ${EIGEN3_INCLUDE_DIR}")
+
+# Find package : Boost preinstalled
+find_package(Boost COMPONENTS filesystem system program_options REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+list(APPEND LIBRARIES ${Boost_LIBRARIES})
+
+# Find package : Sqlite3 calling Find.cmake
+
+find_package(Sqlite3 REQUIRED)
+include_directories(${SQLITE3_INCLUDE_DIR})
+list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
