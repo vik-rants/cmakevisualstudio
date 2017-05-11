@@ -46,14 +46,14 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
-  - cmd: 7z x eigen.zip -o"C:\projects" -y > nul
+  - cmd: 7z x eigen.zip -o"C:\Program Files" -y > nul
 
 
 before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - ps: ls C:/projects
-  - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/cmake
+  - ps: ls C:/Program Files/eigen-eigen-67e894c6cd8f/cmake
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
   #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
