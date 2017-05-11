@@ -11,11 +11,13 @@ include_directories(include)
 
 add_executable(hello ${src})
 
-set (EIGEN3_INCLUDE_DIR C:/projects/eigen-eigen-67e894c6cd8f/ )
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+message("project source dir is : ${PROJECT_SOURCE_DIR}")
+message(STATUS "module path: ${CMAKE_MODULE_PATH} ${CMAKE_ROOT}")
 message("Current dir is : ${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+#list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(Eigen3 REQUIRED)
 include_directories("${EIGEN3_INCLUDE_DIR}")
 message("Found Eigen3 in: ${EIGEN3_INCLUDE_DIR}")
