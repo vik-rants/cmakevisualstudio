@@ -40,6 +40,11 @@ os: Visual Studio 2015
 platform: x64
 
 configuration: Release
+
+environment:
+
+    EIGEN3_ROOT: "C:\Program Files\eigen-eigen-67e894c6cd8f\"
+        
  
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
