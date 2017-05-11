@@ -63,7 +63,7 @@ install:
 before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
-  - ps: ls C:/Libraries
+  - ps: ls "C:/Program Files/sqlite"
   #- ps: ls "C:/Program Files"
   #- ps: ls "C:/Program Files (x86)"
   - ps: ls "C:/Program Files/eigen3"
