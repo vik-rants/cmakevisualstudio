@@ -18,7 +18,7 @@ message("cmake install prefix is : ${CMAKE_INSTALL_PREFIX}")
 message("cmake include path  is : ${CMAKE_INCLUDE_PATH}")
 message(STATUS "module path: ${CMAKE_MODULE_PATH} ${CMAKE_ROOT}")
 message("Current dir is : ${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-SET(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} " C:/projects/cmakevisualstudio")
+SET(CMAKE_INSTALL_PREFIX "C:/projects/cmakevisualstudio")
 message("cmake install prefix after is : ${CMAKE_INSTALL_PREFIX}")
 #SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "C:/win32libs/boost/lib")
 
