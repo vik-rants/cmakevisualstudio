@@ -27,6 +27,6 @@ list(APPEND LIBRARIES ${Boost_LIBRARIES})
 
 # Find package : Sqlite3 calling Find.cmake
 
-find_package(Sqlite3 REQUIRED)
-include_directories(${SQLITE3_INCLUDE_DIR})
-list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
+#find_package(Sqlite3 REQUIRED)
+#include_directories(${SQLITE3_INCLUDE_DIR})
+#list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
