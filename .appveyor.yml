@@ -13,12 +13,26 @@
 #  - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
 #  - cmd: 7z x eigen.zip -o"C:\projects" -y > nul
 #
-#   Changes to  be done in CMakeLists.txt..
+# Changes to  be done in CMakeLists.txt..
 # http://stackoverflow.com/questions/12249140/find-package-eigen3-for-cmake
 # https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html
+# http://stackoverflow.com/questions/34138879/unable-to-find-eigen3-with-cmake
+# 
 #in before build
 #   - cmd: cmake -G "Visual Studio 14 2015 Win64" -D EIGEN3_INCLUDE_DIR=C:\projects\
 #  DCMAKE_MODULE_PATH=C:\projects\cmakevisualstudio\cmake\
+###################################################
+# all the Find ***.cmake files related packages
+#find_package(Git REQUIRED)
+#find_package(Eigen3 REQUIRED)
+#find_package(Sqlite3 REQUIRED)
+#find_package(Boost COMPONENTS filesystem system program_options REQUIRED)
+#find_package(GSL REQUIRED)
+#find_package(OpenMP REQUIRED)
+#find_package(PythonInterp 3 REQUIRED)
+#find_package(PyUIC REQUIRED)
+#
+#
 
 
 os: Visual Studio 2015
@@ -42,7 +56,6 @@ before_build:
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/cmake
   - ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
   #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
-  - ps: ls ${CMAKE_CURRENT_SOURCE_DIR}
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
 
