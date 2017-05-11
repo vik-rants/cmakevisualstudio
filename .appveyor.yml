@@ -42,9 +42,9 @@ platform: x64
 configuration: Release
 
 environment:
-    EIGEN3_ROOT:  C:\Program Files\eigen
+    EIGEN3_ROOT:  C:\Program Files\eigen3
     BOOST_ROOT: C:\Libraries\boost_1_63_0
-    BOOST_LIBRARYDIR: C:\Libraries\boost_1_6_0\lib64-msvc-14_0
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
         
  
 install:
@@ -52,7 +52,7 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
-  - cmd: 7z x eigen.zip -o"C:\Program Files\eigen" -y > nul
+  - cmd: 7z x eigen.zip -o"C:\Program Files\eigen3" -y > nul
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3180000.zip   -OutFile sqlite.zip
   - cmd: 7z x sqlite.zip -o"C:\Program Files\sqlite" -y > nul
   
