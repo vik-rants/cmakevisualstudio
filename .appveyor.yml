@@ -54,7 +54,6 @@ before_build:
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - ps: ls C:/
   - ps: ls "C:/Program Files"
-  - ps: ls C:/Program\Files
   #- ps: ls C:/Program Files/eigen-eigen-67e894c6cd8f/cmake
   #- ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
   #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
