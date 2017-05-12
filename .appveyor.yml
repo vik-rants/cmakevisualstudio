@@ -32,7 +32,7 @@
 #find_package(PythonInterp 3 REQUIRED)
 #find_package(PyUIC REQUIRED)
 #
-#
+#http://stackoverflow.com/questions/41640029/how-can-i-link-cmake-and-sqlite-without-an-external-script
 
 
 os: Visual Studio 2015
@@ -45,7 +45,7 @@ environment:
     EIGEN3_ROOT:  C:\Program Files\eigen3
     BOOST_ROOT: C:\Libraries\boost_1_63_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
-    SQLITE3_INCLUDE_DIR: C:\Program Files\sqlite
+    SQLITE3_ROOT: C:\Program Files\sqlite
         
  
 install:
