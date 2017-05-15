@@ -62,7 +62,7 @@ install:
   - cmd: 7z x sqlite.zip -o"C:\Program Files\sqlite" -y > nul
   
   - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz
-  - ps: tar zxf http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -C "C:\Program Files"
+  - ps: tar zxf gsl-latest.tar.gz -C "C:\Program Files"
   
 
 
