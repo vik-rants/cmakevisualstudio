@@ -60,7 +60,7 @@ install:
   - ps: Rename-Item -Path "C:/Program Files/eigen-eigen-67e894c6cd8f" -NewName "C:/Program Files/eigen3"
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3180000.zip   -OutFile sqlite.zip
   - cmd: 7z x sqlite.zip -o"C:\Program Files\sqlite" -y > nul
-  - ps: wget http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.gnu.org/gsl/gsl-latest.tar.gz -O - | tar -xz --directory "C:\Program Files"
+  - ps: wget http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.gnu.org/gsl/gsl-latest.tar.gz -O - | tar -xz 
   
 
 
