@@ -73,7 +73,7 @@ before_build:
   - ps: ls "C:/Program Files/sqlite"
   - ps: ls "C:/Program Files"
   #- ps: ls "C:/Program Files (x86)"
-  - ps: ls "C:/Program Files/gsl/gsl-2.3"
+  - ps: ls "C:/Program Files/gsl/gsl-2.3/INSTALL"
   #- ps: ls "C:/Program Files/eigen3/eigen-eigen-67e894c6cd8f"
   #- ps: ls C:/projects/eigen-eigen-67e894c6cd8f/Eigen
   #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
