@@ -35,11 +35,13 @@ list(APPEND LIBRARIES ${Boost_LIBRARIES})
 find_package(OpenMP REQUIRED)
 if (OPENMP_FOUND)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+message("FOUNF OpenMP: ${CMAKE_CXX_FLAGS}")
 endif()
 # Find GSL
 find_package(GSL REQUIRED)
 include_directories(${GSL_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${GSL_LIBRARIES})
+message("FOUNF GSL: ${GSL_LIBRARIES}")
 
 
 # get version info from git
