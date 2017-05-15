@@ -60,7 +60,8 @@ install:
   - ps: Rename-Item -Path "C:/Program Files/eigen-eigen-67e894c6cd8f" -NewName "C:/Program Files/eigen3"
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3180000.zip   -OutFile sqlite.zip
   - cmd: 7z x sqlite.zip -o"C:\Program Files\sqlite" -y > nul
-  - ps: 7z x http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files" 
+  - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -Outfile gsl.tar.gz
+  - ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files" 
   
 
 
