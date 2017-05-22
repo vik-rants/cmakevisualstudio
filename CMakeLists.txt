@@ -49,7 +49,8 @@ endif()
 # get version info from git
 find_package(Git REQUIRED)
 
+
 #Python
+find_package(PythonInterp 3 REQUIRED)
 find_package(PyUIC REQUIRED)
 
-find_package(PythonInterp 3 REQUIRED)
