@@ -37,22 +37,19 @@ if (OPENMP_FOUND)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 message("FOUNF OpenMP: ${CMAKE_CXX_FLAGS}")
 endif()
+
 # Find GSL
-find_package(GSL REQUIRED)
-include_directories(${GSL_INCLUDE_DIRS})
-list(APPEND LIBRARIES ${GSL_LIBRARIES})
-message("FOUNF GSL: ${GSL_LIBRARIES}")
+#message("PKG_CONFIG_PATH")
+#find_package(GSL REQUIRED)
+#include_directories(${GSL_INCLUDE_DIRS})
+#list(APPEND LIBRARIES ${GSL_LIBRARIES})
+#message("FOUND GSL: ${GSL_LIBRARIES}")
 
 
 # get version info from git
 find_package(Git REQUIRED)
-execute_process(
-  COMMAND "${GIT_EXECUTABLE}" describe --tags --always
-  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-  OUTPUT_VARIABLE VERSION
-  OUTPUT_STRIP_TRAILING_WHITESPACE )
-string(REGEX REPLACE "v(.+)" "\\1" VERSION_WITHOUT_LEADING_V ${VERSION})
 
 #Python
 find_package(PyUIC REQUIRED)
+
 find_package(PythonInterp 3 REQUIRED)
