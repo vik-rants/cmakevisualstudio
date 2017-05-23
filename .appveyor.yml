@@ -66,8 +66,6 @@ install:
   - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -Outfile gsl.tar.gz
   - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  # INSTALL SCRIIPT
-  - "powershell install.ps1"
   
 
 
