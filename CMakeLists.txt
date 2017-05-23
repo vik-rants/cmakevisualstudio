@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8 )
+cmake_minimum_required(VERSION 3.8.1 )
 project (cmakevisualstudio CXX)
 
 # Add source code and setup folder structure.
@@ -52,5 +52,6 @@ find_package(Git REQUIRED)
 
 #Python
 find_package(PythonInterp 3 REQUIRED)
+#Pythn UIC
 find_package(PyUIC REQUIRED)
 
