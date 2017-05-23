@@ -34,7 +34,7 @@
 #
 #http://stackoverflow.com/questions/41640029/how-can-i-link-cmake-and-sqlite-without-an-external-script
 #http://stackoverflow.com/questions/1359793/programmatically-extract-tar-gz-in-a-single-step-on-windows-with-7zip
-#
+#https://bitbucket.org/amontalenti/appveyor-test/overview
 
 
 os: Visual Studio 2015
@@ -48,7 +48,7 @@ environment:
     BOOST_ROOT: C:\Libraries\boost_1_63_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
     SQLITE3_ROOT: C:\Program Files\sqlite
-    PYTHON_ROOT: C:\Miniconda36-x64
+    PYTHON_ROOT: C:\Python36-x64
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
     GSL_LIBDIR:
         
@@ -56,6 +56,7 @@ environment:
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
+  
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
   - cmd: 7z x eigen.zip -o"C:\Program Files" -y > nul
@@ -65,7 +66,8 @@ install:
   - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -Outfile gsl.tar.gz
   - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  
+  # INSTALL SCRIIPT
+  - "powershell install.ps1"
   
 
 
