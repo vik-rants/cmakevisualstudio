@@ -53,6 +53,7 @@ environment:
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
     GSL_LIBDIR:
     MINICONDA: C:\Miniconda36-x64
+    PyUIC_ROOT: C:\Python36-x64\Scripts
         
  
 install:

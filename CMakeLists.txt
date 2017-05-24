@@ -44,7 +44,7 @@ endif()
 #include_directories(${GSL_INCLUDE_DIRS})
 #list(APPEND LIBRARIES ${GSL_LIBRARIES})
 #message("FOUND GSL: ${GSL_LIBRARIES}")
-
+message("CMake Path List : ${CMAKE_MODULE_PATH} ${CMAKE_PROGRAM_PATH}")
 
 # get version info from git
 find_package(Git REQUIRED)
