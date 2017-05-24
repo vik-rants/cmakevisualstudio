@@ -69,7 +69,7 @@ install:
   - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  - conda install pyqt=5
+  - conda install --yes --quiet pyqt=5
 
 
 before_build:
