@@ -22,6 +22,8 @@ include (FindPackageHandleStandardArgs)
 find_program( PYUIC_BINARY NAMES py3uic5 pyuic5
 				HINTS
 				ENV PyUIC_ROOT
+				PATHS
+				C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2\Lib\site-packages\PyQt5
 			)
 
 # Set the FOUND variable to TRUE if all listed variables are set.
