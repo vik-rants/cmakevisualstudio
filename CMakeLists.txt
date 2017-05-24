@@ -51,7 +51,7 @@ find_package(Git REQUIRED)
 
 
 #Python
-find_package(PythonInterp 3.6 REQUIRED)
+find_package(PythonInterp REQUIRED)
 #Pythn UIC
 find_package(PyUIC REQUIRED)
 

@@ -52,6 +52,7 @@ environment:
     PYTHON_VERSION: 3.6
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
     GSL_LIBDIR:
+    MINICONDA: C:\Miniconda36-x64
         
  
 install:
@@ -67,7 +68,8 @@ install:
   - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -Outfile gsl.tar.gz
   - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  
+  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
+  - conda install pyqt5
 
 
 before_build:
