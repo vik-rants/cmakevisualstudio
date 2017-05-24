@@ -77,7 +77,7 @@ before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - ps: ls "C:/Miniconda36-x64/Scripts"
-  #- ps: ls "C:/Python36-x64"
+  - ps: ls "C:\Python36-x64\Scripts"
   #- ps: ls "C:/Program Files (x86)"
   #- ps: ls "C:/Program Files/gsl/gsl-2.3"
   #- ps: ls "C:/Program Files/eigen3/eigen-eigen-67e894c6cd8f"
