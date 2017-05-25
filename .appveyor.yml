@@ -71,13 +71,13 @@ install:
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3180000.zip   -OutFile sqlite.zip
   - cmd: 7z x sqlite.zip -o"C:\Program Files\sqlite" -y > nul
   # To install the GSL in home directory using PowerShell
-  - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
-  - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
+  #- ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
+  #- ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
   # To install SWIG in home directory using PowerShell 
   
-  - ps: wget  http://downloads.sourceforge.net/project/swig/swigwin/swigwin-3.0.12/swigwin-3.0.12.zip     -OutFile swi.zip
-  - cmd: 7z x swi.zip -o"C:\Program Files" -y > nul
+  - ps: wget  http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip     -OutFile swig.zip
+  - cmd: 7z x swig.zip -o"C:\Program Files\swig" -y > nul
   # Using MINICONDA pre installed to setup  pyqt
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda install --yes --quiet pyqt=5
