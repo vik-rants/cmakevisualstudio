@@ -17,14 +17,9 @@
 # PYUIC_BINARY       - the pyuic GUI builder
 
 # Include these modules to handle the QUIETLY and REQUIRED arguments.
-include (FindPackageHandleStandardArgs)
+include(FindPackageHandleStandardArgs)
 
-find_program( PYUIC_BINARY NAMES py3uic5 pyuic5
-				HINTS
-				ENV PyUIC_ROOT
-				PATHS
-				PyUIC_ROOT
-			)
+find_program( PYUIC_BINARY NAMES py3uic5 py3uic5.bat pyuic5 pyuic5.bat )
 
 # Set the FOUND variable to TRUE if all listed variables are set.
 find_package_handle_standard_args( PyUIC DEFAULT_MSG PYUIC_BINARY )
