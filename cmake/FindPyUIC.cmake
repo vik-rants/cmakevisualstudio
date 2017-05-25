@@ -22,8 +22,6 @@ include (FindPackageHandleStandardArgs)
 find_program( PYUIC_BINARY NAMES py3uic5 pyuic5.bat
 				HINTS
 				ENV PyUIC_ROOT
-				PATHS
-				PyUIC_ROOT
 			)
 
 # Set the FOUND variable to TRUE if all listed variables are set.
