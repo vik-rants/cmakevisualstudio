@@ -56,7 +56,7 @@ find_package(Git REQUIRED)
 find_package(PythonInterp 3 REQUIRED)
 #Pythn UIC
 find_package(PyUIC REQUIRED)
-
 #Python Libraries###
 find_package(PythonLibs 3 REQUIRED)
-
+#NumPy
+find_package(Numpy REQUIRED)

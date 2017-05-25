@@ -74,15 +74,15 @@ install:
   #- ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
   #- ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  # To install SWIG in home directory using PowerShell 
+  # To install SWIG in home directory using PowerShell   
+  #- ps: wget http://downloads.sourceforge.net/project/swig/swigwin/swigwin-3.0.12/swigwin-3.0.12.zip     -OutFile swig.zip  
+  #- cmd: 7z x swig.zip -o"C:\Program Files\swig" -y > nul
   
-  - ps: wget  http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile swig.zip
-  - cmd: 7z x swig.zip -o"C:\Program Files\swig" -y > nul
   # Using MINICONDA pre installed to setup  pyqt
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda install --yes --quiet pyqt=5
   # Using MINICONDA pre installed to setup  NumPy
-  
+  - conda install --yes --quiet numpy
 
 
 before_build:
