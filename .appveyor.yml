@@ -70,8 +70,9 @@ install:
   - ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -Outfile gsl.tar.gz
   - ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  - conda install --yes --quiet pyqt=5
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  - cmd: conda install -y pyqt
+  - cmd: pyuic5 --help
 
 
 before_build:
