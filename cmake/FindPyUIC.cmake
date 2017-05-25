@@ -19,7 +19,7 @@
 # Include these modules to handle the QUIETLY and REQUIRED arguments.
 include (FindPackageHandleStandardArgs)
 
-find_program( PYUIC_BINARY NAMES py3uic5 pyuic
+find_program( PYUIC_BINARY NAMES py3uic5 pyuic5
 				HINTS
 				ENV PyUIC_ROOT
 				PATHS
