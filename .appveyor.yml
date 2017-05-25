@@ -35,6 +35,7 @@
 #http://stackoverflow.com/questions/41640029/how-can-i-link-cmake-and-sqlite-without-an-external-script
 #http://stackoverflow.com/questions/1359793/programmatically-extract-tar-gz-in-a-single-step-on-windows-with-7zip
 #https://bitbucket.org/amontalenti/appveyor-test/overview
+#https://github.com/ContinuumIO/anaconda-issues/issues/438
 
 
 os: Visual Studio 2015
@@ -77,7 +78,7 @@ before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   - ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Lib/site-packages/PyQt5/uic"
-  - ps: ls "C:/Python36-x64"
+  - ps: ls "C:/Python36-x64/Lib/site-packages"
   #- ps: ls "C:/Program Files (x86)"
   #- ps: ls "C:/Program Files/gsl/gsl-2.3"
   #- ps: ls "C:/Program Files/eigen3/eigen-eigen-67e894c6cd8f"
