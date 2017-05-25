@@ -45,12 +45,14 @@ platform: x64
 configuration: Release
 
 environment:
+    PYTHON_VERSION: 3.6
+    PYTHON_ARCH: 64
+    PYTHON_HOME: C:\Python36-x64
     EIGEN3_ROOT:  C:\Program Files\eigen3
     BOOST_ROOT: C:\Libraries\boost_1_63_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
     SQLITE3_ROOT: C:\Program Files\sqlite
     PYTHON_ROOT: C:\Python36-x64
-    PYTHON_VERSION: 3.6
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
     GSL_LIBDIR:
     MINICONDA: C:\Miniconda36-x64
@@ -60,6 +62,8 @@ environment:
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
+  
+  - ps: ls "C:\Python36-x64"
   
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
