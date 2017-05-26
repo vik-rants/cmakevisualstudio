@@ -26,10 +26,9 @@ include_directories(${Boost_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${Boost_LIBRARIES})
 
 # Find package : Sqlite3 calling Find.cmake
-
-#find_package(Sqlite3 REQUIRED)
-#include_directories(${SQLITE3_INCLUDE_DIR})
-#list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
+find_package(Sqlite3 REQUIRED)
+include_directories(${SQLITE3_INCLUDE_DIR})
+list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
 
 # Find package : OpenMP
 find_package(OpenMP REQUIRED)
@@ -49,7 +48,7 @@ endif()
 # get version info from git
 find_package(Git REQUIRED)
 
-#SWIG
+# Find SWIG
 #find_package(SWIG REQUIRED)
 
 #Python

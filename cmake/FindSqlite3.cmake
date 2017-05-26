@@ -24,7 +24,7 @@
 # Include these modules to handle the QUIETLY and REQUIRED arguments.
 include (FindPackageHandleStandardArgs)
 
-find_path( SQLITE3_INCLUDE_DIR NAMES sqlite3.h
+find_path( SQLITE3_INCLUDE_DIR NAMES sqlite3
 	HINTS
     ENV SQLITE3_ROOT 
 	)
