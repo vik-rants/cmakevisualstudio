@@ -26,16 +26,16 @@ include_directories(${Boost_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${Boost_LIBRARIES})
 
 # Find package : Sqlite3 calling Find.cmake
-
-#find_package(Sqlite3 REQUIRED)
-#include_directories(${SQLITE3_INCLUDE_DIR})
-#list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
+find_package(Sqlite3 REQUIRED)
+include_directories(${SQLITE3_INCLUDE_DIR})
+list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
+message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY}")
 
 # Find package : OpenMP
 find_package(OpenMP REQUIRED)
 if (OPENMP_FOUND)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-message("FOUNF OpenMP: ${CMAKE_CXX_FLAGS}")
+message("FOUND OpenMP: ${CMAKE_CXX_FLAGS}")
 endif()
 
 # Find GSL
@@ -44,15 +44,19 @@ endif()
 #include_directories(${GSL_INCLUDE_DIRS})
 #list(APPEND LIBRARIES ${GSL_LIBRARIES})
 #message("FOUND GSL: ${GSL_LIBRARIES}")
-message("CMake Path List : ${CMAKE_MODULE_PATH} ${CMAKE_PROGRAM_PATH}")
+#message("CMake Path List : ${CMAKE_MODULE_PATH} ${CMAKE_PROGRAM_PATH}")
 
 # get version info from git
 find_package(Git REQUIRED)
 
+# Find SWIG
+#find_package(SWIG REQUIRED)
 
 #Python
 find_package(PythonInterp 3 REQUIRED)
-
 #Pythn UIC
 find_package(PyUIC REQUIRED)
-
+#Python Libraries###
+find_package(PythonLibs 3 REQUIRED)
+#NumPy
+find_package(Numpy REQUIRED)
