@@ -27,9 +27,16 @@ find_path( SQLITE3_INCLUDE_DIR NAMES sqlite3.h
 			
 			)
 
-find_library( SQLITE3_LIBRARY NAMES sqlite3 )
+find_library( SQLITE3_LIBRARY NAMES sqlite3.dll 
+			
+			HINTS
+			ENV SQLITE3_ROOT
+			)
 
-find_program( SQLITE3_BINARY NAMES sqlite3 )
+find_program( SQLITE3_BINARY NAMES sqlite3.exe 
+			HINTS
+			ENV SQLITE3_ROOT
+			)
 
 # Set the FOUND variable to TRUE if all listed variables are set.
 find_package_handle_standard_args( SQLITE3 DEFAULT_MSG SQLITE3_LIBRARY SQLITE3_INCLUDE_DIR SQLITE3_BINARY )
