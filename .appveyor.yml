@@ -48,7 +48,7 @@ environment:
     EIGEN3_ROOT:  C:\Program Files\eigen3
     BOOST_ROOT: C:\Libraries\boost_1_63_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
-    SQLITE3_ROOT: C:\Program Files\sqlite\sqlite-amalgamation-3190200
+    SQLITE3_ROOT: C:\Program Files\sqlite
     PYTHON_ROOT: C:\Python36-x64
     PYTHON_VERSION: 3.6
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
@@ -71,9 +71,9 @@ install:
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3190200.zip   -OutFile Lib.zip
   - cmd: 7z x Lib.zip -o"C:\Program Files\sqlite" -y > nul
   - ps : wget http://www.sqlite.org/2017/sqlite-tools-win32-x86-3190200.zip   -OutFile Bin.zip
-  - cmd: 7z x Bin.zip -o"C:\Program Files\sqlite" -y > nul
+  - cmd: 7z e Bin.zip -o"C:\Program Files\sqlite" -y > nul
   - ps : wget http://www.sqlite.org/2017/sqlite-amalgamation-3190200.zip   -OutFile include.zip
-  - cmd: 7z x include.zip -o"C:\Program Files\sqlite" -y > nul
+  - cmd: 7z e include.zip -o"C:\Program Files\sqlite" -y > nul
   # To install the GSL in home directory using PowerShell
   #- ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
   #- ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
