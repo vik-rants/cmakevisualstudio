@@ -32,7 +32,7 @@ find_library( GSL_LIBRARY
   HINTS ${GSL_LIBDIR} )
 
 find_library( GSL_CBLAS_LIBRARY
-  NAMES gslcblas cblas
+  NAMES 	 cblas gslcblas
   HINTS ${GSL_LIBDIR} )
 
 set( GSL_INCLUDE_DIRS ${GSL_INCLUDE_DIR} )
