@@ -29,7 +29,7 @@ list(APPEND LIBRARIES ${Boost_LIBRARIES})
 find_package(Sqlite3 REQUIRED)
 include_directories(${SQLITE3_INCLUDE_DIR})
 list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
-message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY}")
+message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY} ${SQLITE3_BINARY}")
 
 # Find package : OpenMP
 find_package(OpenMP REQUIRED)
@@ -40,9 +40,9 @@ endif()
 
 # Find GSL
 #message("PKG_CONFIG_PATH")
-#find_package(GSL REQUIRED)
-#include_directories(${GSL_INCLUDE_DIRS})
-#list(APPEND LIBRARIES ${GSL_LIBRARIES})
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIRS})
+list(APPEND LIBRARIES ${GSL_LIBRARIES})
 #message("FOUND GSL: ${GSL_LIBRARIES}")
 #message("CMake Path List : ${CMAKE_MODULE_PATH} ${CMAKE_PROGRAM_PATH}")
 
