@@ -89,6 +89,7 @@ install:
   - conda install --yes --quiet pyqt=5
   # Using MINICONDA pre installed to setup  NumPy
   - conda install --yes --quiet numpy
+  -cmd: where pkg-config
 
 before_build:
   - cmd: md build && cd build
