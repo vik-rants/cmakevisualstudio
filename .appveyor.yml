@@ -54,10 +54,7 @@ environment:
     GSL_INCLUDEDIR: C:\Program Files\gsl\gsl-2.3
     GSL_LIBDIR:
     MINICONDA: C:\Miniconda36-x64
-    PyUIC_ROOT: C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2\Library\bin
     SWIG_ROOT:
-    
-        
  
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
@@ -78,16 +75,16 @@ install:
   #- ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
   #- ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
   # To install SWIG in home directory using PowerShell   
   #- ps: wget http://downloads.sourceforge.net/project/swig/swigwin/swigwin-3.0.12/swigwin-3.0.12.zip     -OutFile swig.zip  
   #- cmd: 7z x swig.zip -o"C:\Program Files\swig" -y > nul
   
   # Using MINICONDA pre installed to setup  pyqt
-  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
+  #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda install --yes --quiet pyqt=5
   # Using MINICONDA pre installed to setup  NumPy
   - conda install --yes --quiet numpy
-
 
 before_build:
   - cmd: md build && cd build
