@@ -53,7 +53,6 @@ environment:
     PYTHON_VERSION: 3.6
     GSL_INCLUDEDIR: C:\Program Files\gsl
     GSL_LIBDIR: C:\Program Files\gsl
-    GSL_LIBDIR:
     MINICONDA: C:\Miniconda36-x64
     SWIG_ROOT:
     
