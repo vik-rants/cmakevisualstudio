@@ -72,7 +72,7 @@ install:
   - cmd: 7z e Bin.zip -o"C:\Program Files\sqlite" -y > nul
   - ps : wget http://www.sqlite.org/2017/sqlite-amalgamation-3190200.zip   -OutFile include.zip
   - cmd: 7z e include.zip -o"C:\Program Files\sqlite" -y > nul
-  - cmd: lib /def:C:\Program Files\sqlite\sqlite3.def /out:C:\Program Files\sqlite\sqlite3.lib /machine:x64
+  - cmd: lib /def:"C:\Program Files\sqlite\sqlite3.def" /out:"C:\Program Files\sqlite\sqlite3.lib" /machine:x64
   # To install the GSL in home directory using PowerShell
   - ps : wget https://www.bruot.org/hp/media/files/libraries/gsl_1_16_msvc2015_64.zip   -OutFile gsl.zip
   - cmd: 7z e gsl.zip -o"C:\Program Files\gsl" -y > nul
