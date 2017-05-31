@@ -18,6 +18,10 @@
 # GSL_INCLUDE_DIRS   - directory with all header files
 
 # Include these modules to handle the QUIETLY and REQUIRED arguments.
+##
+SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
+##
 include (FindPackageHandleStandardArgs)
 
 find_package(PkgConfig)

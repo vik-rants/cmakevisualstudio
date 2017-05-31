@@ -39,11 +39,11 @@ message("FOUND OpenMP: ${CMAKE_CXX_FLAGS}")
 endif()
 
 # Find GSL
-#message("PKG_CONFIG_PATH")
-#find_package(GSL REQUIRED)
-#include_directories(${GSL_INCLUDE_DIRS})
-#list(APPEND LIBRARIES ${GSL_LIBRARIES})
-#message("FOUND GSL: ${GSL_LIBRARIES}")
+message("PKG_CONFIG_PATH")
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIRS})
+list(APPEND LIBRARIES ${GSL_LIBRARIES})
+message("FOUND GSL: ${GSL_LIBRARIES}")
 #message("CMake Path List : ${CMAKE_MODULE_PATH} ${CMAKE_PROGRAM_PATH}")
 
 # get version info from git
