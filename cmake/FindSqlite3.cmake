@@ -19,6 +19,10 @@
 # SQLITE3_BINARY        - sqlite3 executable
 
 # Include these modules to handle the QUIETLY and REQUIRED arguments.
+##
+SET(CMAKE_FIND_LIBRARY_PREFIXES "")
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
+##
 include (FindPackageHandleStandardArgs)
 
 find_path( SQLITE3_INCLUDE_DIR NAMES sqlite3.h
