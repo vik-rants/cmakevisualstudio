@@ -60,3 +60,5 @@ find_package(PyUIC REQUIRED)
 find_package(PythonLibs 3 REQUIRED)
 #NumPy
 find_package(Numpy REQUIRED)
+
+target_link_libraries(hello ${LIBRARIES})

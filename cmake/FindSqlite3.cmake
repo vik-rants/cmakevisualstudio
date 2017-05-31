@@ -31,13 +31,13 @@ find_path( SQLITE3_INCLUDE_DIR NAMES sqlite3.h
 			
 			)
 
-find_library( SQLITE3_LIBRARY NAMES sqlite3.dll 
+find_library( SQLITE3_LIBRARY NAMES sqlite3
 			
 			HINTS
 			ENV SQLITE3_ROOT
 			)
 
-find_program( SQLITE3_BINARY NAMES sqlite3.exe 
+find_program( SQLITE3_BINARY NAMES sqlite3 
 			HINTS
 			ENV SQLITE3_ROOT
 			)
