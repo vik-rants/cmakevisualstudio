@@ -29,15 +29,18 @@ include (FindPackageHandleStandardArgs)
 
 find_path( GSL_INCLUDE_DIR
   NAMES gsl/gsl_sf.h
-  HINTS ${GSL_INCLUDEDIR} )
+  HINTS  
+  ENV GSL_INCLUDEDIR )
 
 find_library( GSL_LIBRARY
   NAMES gsl
-  HINTS ${GSL_LIBDIR} )
+  HINTS 
+  ENV GSL_LIBDIR )
 
 find_library( GSL_CBLAS_LIBRARY
   NAMES 	 cblas gslcblas
-  HINTS ${GSL_LIBDIR} )
+  HINTS 
+  ENV GSL_LIBDIR )
 
 set( GSL_INCLUDE_DIRS ${GSL_INCLUDE_DIR} )
 set( GSL_LIBRARIES ${GSL_LIBRARY} ${GSL_CBLAS_LIBRARY} )
