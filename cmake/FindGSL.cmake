@@ -24,8 +24,8 @@ SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".dll")
 ##
 include (FindPackageHandleStandardArgs)
 
-find_package(PkgConfig)
-pkg_check_modules(GSL gsl)
+#find_package(PkgConfig)
+#pkg_check_modules(GSL gsl)
 
 find_path( GSL_INCLUDE_DIR
   NAMES gsl/gsl_sf.h
