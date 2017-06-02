@@ -82,7 +82,7 @@ install:
    #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
   # To install SWIG in home directory using PowerShell   
-  - ps: wget http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip     -OutFile swig.zip  
+  - cmd : wget -O swig.zip http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip
   - cmd: 7z x swig.zip -o"C:\Program Files\swig" -y > nul
   
   # Using MINICONDA pre installed to setup  pyqt
