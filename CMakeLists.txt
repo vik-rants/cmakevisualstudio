@@ -50,7 +50,7 @@ message("FOUND GSL: ${GSL_LIBRARIES}")
 find_package(Git REQUIRED)
 
 # Find SWIG
-#find_package(SWIG REQUIRED)
+find_package(SWIG REQUIRED)
 
 #Python
 find_package(PythonInterp 3 REQUIRED)
