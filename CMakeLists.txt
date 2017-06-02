@@ -39,7 +39,7 @@ message("FOUND OpenMP: ${CMAKE_CXX_FLAGS}")
 endif()
 
 # Find GSL
-message("PKG_CONFIG_PATH")
+#message("PKG_CONFIG_PATH")
 find_package(GSL REQUIRED)
 include_directories(${GSL_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${GSL_LIBRARIES})
