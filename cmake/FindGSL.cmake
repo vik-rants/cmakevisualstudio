@@ -41,6 +41,7 @@ find_library( GSL_CBLAS_LIBRARY
 
 set( GSL_INCLUDE_DIRS ${GSL_INCLUDE_DIR} )
 set( GSL_LIBRARIES ${GSL_LIBRARY} ${GSL_CBLAS_LIBRARY} )
+message("FOUND GSL HERE: ${GSL_LIBRARY} ${GSL_CBLAS_LIBRARY}")
 
 # Set the FOUND variable to TRUE if all listed variables are set.
 find_package_handle_standard_args( GSL DEFAULT_MSG GSL_LIBRARIES GSL_INCLUDE_DIRS )
