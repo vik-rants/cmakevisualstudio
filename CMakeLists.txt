@@ -19,7 +19,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 
 # Find package : Sqlite3 calling Find.cmake
-find_package(Sqlite3 REQUIRED)
+find_package(sqlite3 REQUIRED)
 include_directories(${SQLITE3_INCLUDE_DIR})
 list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
 message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY} ${SQLITE3_BINARY}")
