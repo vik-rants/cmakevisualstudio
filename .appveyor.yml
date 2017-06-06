@@ -71,9 +71,8 @@ install:
         
         cd vcpkg
         powershell -exec bypass scripts\bootstrap.ps1
-        .\vcpkg integrate install
-        
-        \vcpkg install sqlite3
+        .\vcpkg integrate install 
+        .\vcpkg install sqlite3
 
     
   
