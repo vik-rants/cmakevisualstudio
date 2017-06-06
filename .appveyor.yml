@@ -45,14 +45,14 @@ platform: x64
 configuration: Release
 
 environment:
-    EIGEN3_ROOT:  C:\Program Files\eigen3
-    BOOST_ROOT: C:\Libraries\boost_1_63_0
-    BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
-    SQLITE3_ROOT: C:\Program Files\sqlite
+    #EIGEN3_ROOT:  C:\Program Files\eigen3
+    #BOOST_ROOT: C:\Libraries\boost_1_63_0
+    #BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
+    #SQLITE3_ROOT: C:\Program Files\sqlite
     PYTHON_ROOT: C:\Python36-x64
     PYTHON_VERSION: 3.6
-    GSL_INCLUDEDIR: C:\Program Files\gsl
-    GSL_LIBDIR: C:\Program Files\gsl
+    #GSL_INCLUDEDIR: C:\Program Files\gsl
+    #GSL_LIBDIR: C:\Program Files\gsl
     MINICONDA: C:\Miniconda36-x64
     SWIG_ROOT:
     
