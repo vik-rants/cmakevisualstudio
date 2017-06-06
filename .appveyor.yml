@@ -67,6 +67,10 @@ install:
         
         IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
         
+        cd vcpkg
+        
+        dir
+        
       
         
   
