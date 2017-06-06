@@ -61,10 +61,29 @@ install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
   
+  # USING VCPKG FOR INSTALLING STANDARD LIBRARIES
+  
+  - cmd: >-
+    dir c:\
+    cd c:\
+    
+    IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
+    
+    cd vcpkg
+    powershell -exec bypass scripts\bootstrap.ps1
+    .\vcpkg integrate install
+    
+    \vcpkg install sqlite3
+
+    
+  
+  
+  
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
   - cmd: 7z x eigen.zip -o"C:\Program Files" -y > nul
   - ps: Rename-Item -Path "C:/Program Files/eigen-eigen-67e894c6cd8f" -NewName "C:/Program Files/eigen3"
+  
   # To install the sqlite in home directory using PowerShell
   - ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3190200.zip   -OutFile Lib.zip
   - cmd: 7z e Lib.zip -o"C:\Program Files\sqlite" -y > nul
@@ -73,39 +92,33 @@ install:
   - ps : wget http://www.sqlite.org/2017/sqlite-amalgamation-3190200.zip   -OutFile include.zip
   - cmd: 7z e include.zip -o"C:\Program Files\sqlite" -y > nul
   - cmd: lib /def:"C:\Program Files\sqlite\sqlite3.def" /out:"C:\Program Files\sqlite\sqlite3.lib" /machine:x64
+  
   # To install the GSL in home directory using PowerShell
   - ps : wget https://www.bruot.org/hp/media/files/libraries/gsl_1_16_msvc2015_64.zip   -OutFile gsl.zip
   - cmd: 7z e gsl.zip -o"C:\Program Files\gsl" -y > nul
-  
-  #- ps: wget http://www.bothelp.net/mirrors/gnu/gsl/gsl-latest.tar.gz -OutFile gsl.tar.gz
-  #- ps: 7z x "gsl.tar.gz" -so  | &7z x -aoa -si -ttar -o"C:\Program Files\gsl"
-   #- ps: 7z x gsl.tar.gz -so | 7z x -aoa -si -ttar -o"C:\Program Files\gsl" 
-  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
-  # To install SWIG in home directory using PowerShell   
-  #- ps : wget http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip   -OutFile swigwin.zip
-  #- cmd: 7z x swigwin-3.0.12.zip -o"C:\Program Files\swig" -y > nul
-  #- cmd: unzip swigwin.zip -d "C:\Program Files\swig"
+        
+  # To install SWIG in home directory using choco
   - ps: choco install -y swig > $null
   
-  # Using MINICONDA pre installed to setup  pyqt
+  # Using MINICONDA pre installed to setup  pyqt and numpy
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda install --yes --quiet pyqt=5
   # Using MINICONDA pre installed to setup  NumPy
   - conda install --yes --quiet numpy
   #- cmd: which pkg-config
+  
+  
 
 before_build:
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   
   #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
-  - ps: ls "C:/Program Files/gsl"
-  - ps: ls "C:/Program Files/gsl/lib"
+  #- ps: ls "C:/Program Files/gsl"
+  #- ps: ls "C:/Program Files/gsl/lib"
    
-  #- ps: ls "C:/Program Files/gsl/gsl-2.3"
-  #- ps: ls "C:/Program Files/eigen3/eigen-eigen-67e894c6cd8f"
-  
-  #- ps: ls ${PROJ_SOURCE_DIR}/cmake/
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
 
@@ -117,6 +130,8 @@ build:
 artifacts:
   - path: build\Release\hello.exe
     name: installer
+    
+cache: c:\vcpkg\ -> appveyor.yml    
 
 deploy:
   - provider: GitHub
