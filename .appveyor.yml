@@ -75,7 +75,7 @@ install:
 
         .\vcpkg integrate install
         
-        .\vcpkg install sqlite3 eigen3 boost gsl
+        .\vcpkg install sqlite3
   
   # To install the eigen in home directory using PowerShell
   #- ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
