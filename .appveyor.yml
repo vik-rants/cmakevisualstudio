@@ -96,15 +96,15 @@ install:
   #- cmd: 7z e gsl.zip -o"C:\Program Files\gsl" -y > nul
         
   # To install SWIG in home directory using choco
-  #- ps: choco install -y swig > $null
+  - ps: choco install -y swig > $null
   
   # Using MINICONDA pre installed to setup  pyqt and numpy
-  #- cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
   
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  #- conda install --yes --quiet pyqt=5
+  - conda install --yes --quiet pyqt=5
   # Using MINICONDA pre installed to setup  NumPy
-  #- conda install --yes --quiet numpy
+  - conda install --yes --quiet numpy
   #- cmd: which pkg-config
   - ps: choco install -y sqlite
   
