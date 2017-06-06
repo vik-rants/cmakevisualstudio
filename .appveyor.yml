@@ -71,8 +71,11 @@ install:
         
         dir
         
-      
+        powershell -exec bypass scripts\bootstrap.ps1
+
+        .\vcpkg integrate install
         
+        .\vcpkg sqllite3
   
   # To install the eigen in home directory using PowerShell
   #- ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
@@ -107,6 +110,7 @@ install:
   
 
 before_build:
+  - cmd: cd C:/projects/cmakevisualstudio
   - cmd: md build && cd build
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   
