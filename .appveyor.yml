@@ -64,6 +64,8 @@ install:
   # USING VCPKG FOR INSTALLING STANDARD LIBRARIES
   - cmd: >-
         dir c:\
+        dir C:\
+        dir
         cd c:\
         
         IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
