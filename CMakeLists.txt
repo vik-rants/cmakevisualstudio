@@ -15,6 +15,15 @@ add_executable(hello ${src})
 #Set the module path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+
+
+
+# Find package : Sqlite3 calling Find.cmake
+find_package(Sqlite3 REQUIRED)
+include_directories(${SQLITE3_INCLUDE_DIR})
+list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
+message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY} ${SQLITE3_BINARY}")
+
 # Find package : Eigen3 calling Findeigen.cmake
 find_package(Eigen3 REQUIRED)
 include_directories("${EIGEN3_INCLUDE_DIR}")
@@ -25,11 +34,6 @@ find_package(Boost COMPONENTS filesystem system program_options REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 list(APPEND LIBRARIES ${Boost_LIBRARIES})
 
-# Find package : Sqlite3 calling Find.cmake
-find_package(Sqlite3 REQUIRED)
-include_directories(${SQLITE3_INCLUDE_DIR})
-list(APPEND LIBRARIES ${SQLITE3_LIBRARY})
-message("Found SQL in: ${SQLITE3_INCLUDE_DIR} ${SQLITE3_LIBRARY} ${SQLITE3_BINARY}")
 
 # Find package : OpenMP
 find_package(OpenMP REQUIRED)
