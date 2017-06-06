@@ -106,7 +106,7 @@ before_build:
   
   #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
   #- ps: ls "C:/Program Files/gsl"
-  #- ps: ls "C:/Program Files/gsl/lib"
+  - ps: ls "C:/projects/cmakevisualstudio"
    
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" ..
