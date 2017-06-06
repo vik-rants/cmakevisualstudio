@@ -65,6 +65,8 @@ install:
   - cmd: >-
         cd C:\
         
+        IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
+        
       
         
   
