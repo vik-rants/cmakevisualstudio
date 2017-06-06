@@ -64,7 +64,6 @@ install:
   # USING VCPKG FOR INSTALLING STANDARD LIBRARIES
   - cmd: >-
         cd C:\
-        dir
         
       
         
