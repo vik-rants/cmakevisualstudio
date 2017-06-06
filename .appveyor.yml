@@ -64,6 +64,9 @@ install:
   # USING VCPKG FOR INSTALLING STANDARD LIBRARIES
   - cmd: >-
         dir c:\
+        cd c:\
+        IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
+        cd vcpkg
   
   # To install the eigen in home directory using PowerShell
   - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
