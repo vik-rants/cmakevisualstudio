@@ -111,10 +111,10 @@ artifacts:
     name: installer
     
 cache: 
-c:\vcpkg\
-C:\Miniconda36-x64
-C:\ProgramData\chocolatey\bin
-C:\ProgramData\chocolatey\lib  
+- C:\vcpkg\
+- C:\Miniconda36-x64
+- C:\ProgramData\chocolatey\bin
+- C:\ProgramData\chocolatey\lib  
 
 deploy:
   - provider: GitHub
