@@ -67,33 +67,12 @@ install:
         
         IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
         
-        cd vcpkg
-        
-        dir
+        cd vcpkg        
         
         powershell -exec bypass scripts\bootstrap.ps1
-
-        .\vcpkg integrate install
         
         .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
   
-  # To install the eigen in home directory using PowerShell
-  #- ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
-  #- cmd: 7z x eigen.zip -o"C:\Program Files" -y > nul
-  #- ps: Rename-Item -Path "C:/Program Files/eigen-eigen-67e894c6cd8f" -NewName "C:/Program Files/eigen3"
-  
-  # To install the sqlite in home directory using PowerShell
-  #- ps : wget http://www.sqlite.org/2017/sqlite-dll-win64-x64-3190200.zip   -OutFile Lib.zip
-  #- cmd: 7z e Lib.zip -o"C:\Program Files\sqlite" -y > nul
-  #- ps : wget http://www.sqlite.org/2017/sqlite-tools-win32-x86-3190200.zip   -OutFile Bin.zip
-  #- cmd: 7z e Bin.zip -o"C:\Program Files\sqlite" -y > nul
-  #- ps : wget http://www.sqlite.org/2017/sqlite-amalgamation-3190200.zip   -OutFile include.zip
-  #- cmd: 7z e include.zip -o"C:\Program Files\sqlite" -y > nul
-  #- cmd: lib /def:"C:\Program Files\sqlite\sqlite3.def" /out:"C:\Program Files\sqlite\sqlite3.lib" /machine:x64
-  
-  # To install the GSL in home directory using PowerShell
-  #- ps : wget https://www.bruot.org/hp/media/files/libraries/gsl_1_16_msvc2015_64.zip   -OutFile gsl.zip
-  #- cmd: 7z e gsl.zip -o"C:\Program Files\gsl" -y > nul
         
   # To install SWIG in home directory using choco
   - ps: choco install -y swig > $null
@@ -102,11 +81,11 @@ install:
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
   
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  - conda install --yes --quiet pyqt=5
+  - conda install --yes --quiet pyqt=5.8.2
   # Using MINICONDA pre installed to setup  NumPy
-  - conda install --yes --quiet numpy
+  - conda install --yes --quiet numpy=1.12.1
   #- cmd: which pkg-config
-  - ps: choco install -y sqlite
+  - ps: choco install -y sqlite --version 3.19.2
   
   
 
@@ -131,7 +110,11 @@ artifacts:
   - path: build\Release\hello.exe
     name: installer
     
-cache: c:\vcpkg\ -> appveyor.yml    
+cache: 
+c:\vcpkg\
+C:\Miniconda36-x64
+C:\ProgramData\chocolatey\bin
+C:\ProgramData\chocolatey\lib  
 
 deploy:
   - provider: GitHub
