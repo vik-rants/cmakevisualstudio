@@ -21,10 +21,7 @@ install:
   - cmd: >-
         cd C:\
         
-        IF NOT EXIST c:\vcpkg\ ( git clone -n https://github.com/Microsoft/vcpkg.git
-                                 git checkout 517b3fa
-                        
-                        ) ELSE ( echo VCPKG is cached )
+        IF NOT EXIST c:\vcpkg\ ( git clone -b 517b3fa  https://github.com/Microsoft/vcpkg.git) ELSE ( echo VCPKG is cached )
         
         cd vcpkg        
         
