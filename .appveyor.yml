@@ -18,16 +18,13 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
   
   ### USING VCPKG FOR INSTALLING STANDARD LIBRARIES
+  #IF NOT EXIST c:\vcpkg\ (git checkout 517b3fabbbb713d7483a62f71446623d80d04e97)
   - cmd: >-
         cd C:\
         
         IF NOT EXIST c:\vcpkg\    (git clone -n https://github.com/Microsoft/vcpkg.git)ELSE ( echo VCPKG is cached )
         
-        cd vcpkg  
-
-        IF NOT EXIST c:\vcpkg\ (git checkout 517b3fabbbb713d7483a62f71446623d80d04e97)
-        
-        git clone -n https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
         
         powershell -exec bypass scripts\bootstrap.ps1
         
