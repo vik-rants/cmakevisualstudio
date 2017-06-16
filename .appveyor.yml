@@ -72,8 +72,8 @@ artifacts:
     name: installer
     
 cache: 
-- C:\vcpkg\installed\x64-windows
-- C:\vcpkg\packages
+#- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\packages
 - C:\Miniconda36-x64\pkgs
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
