@@ -1,43 +1,3 @@
-# TODOs
-# 1) Minior improvements
-#    * Add an appveyor status badge (https://www.appveyor.com/docs/status-badges/), similar to the used travis status badge
-# 2) Make Eigen work
-#    * Change appveyor.yml so that the library Eigen can be used on appveyor (probably, one has to make appveyor download Eigen from bitbuckets)
-#    * Adapt the file cmake/FindEigen3.cmake so that the command "find_package(Eigen3 REQUIRED)" in the file CMakeLists.txt works on appveyor as well
-##   * Uncomment the Eigen example in Source.cpp and let it run
-
-## EIGEN CHANGS
-
-#  The latest stable release is Eigen 3.3.3.
-#   http://bitbucket.org/eigen/eigen/get/3.3.3.zip
-#  - ps: wget http://bitbucket.org/eigen/eigen/get/3.3.3.zip     -OutFile eigen.zip
-#  - cmd: 7z x eigen.zip -o"C:\projects" -y > nul
-#
-# Changes to  be done in CMakeLists.txt..
-# http://stackoverflow.com/questions/12249140/find-package-eigen3-for-cmake
-# https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html
-# http://stackoverflow.com/questions/34138879/unable-to-find-eigen3-with-cmake
-# 
-#in before build
-#   - cmd: cmake -G "Visual Studio 14 2015 Win64" -D EIGEN3_INCLUDE_DIR=C:\projects\
-#  DCMAKE_MODULE_PATH=C:\projects\cmakevisualstudio\cmake\
-###################################################
-# all the Find ***.cmake files related packages
-#find_package(Git REQUIRED)
-#find_package(Eigen3 REQUIRED) ok
-#find_package(Sqlite3 REQUIRED)
-#find_package(Boost COMPONENTS filesystem system program_options REQUIRED) ok
-#find_package(GSL REQUIRED).. Ok
-#find_package(OpenMP REQUIRED).. Ok
-#find_package(PythonInterp 3 REQUIRED)
-#find_package(PyUIC REQUIRED)
-#
-#http://stackoverflow.com/questions/41640029/how-can-i-link-cmake-and-sqlite-without-an-external-script
-#http://stackoverflow.com/questions/1359793/programmatically-extract-tar-gz-in-a-single-step-on-windows-with-7zip
-#https://bitbucket.org/amontalenti/appveyor-test/overview
-#https://github.com/ContinuumIO/anaconda-issues/issues/438
-
-
 os: Visual Studio 2015
 
 platform: x64
@@ -45,14 +5,10 @@ platform: x64
 configuration: Release
 
 environment:
-    #EIGEN3_ROOT:  C:\Program Files\eigen3
-    #BOOST_ROOT: C:\Libraries\boost_1_63_0
-    #BOOST_LIBRARYDIR: C:\Libraries\boost_1_63_0\lib64-msvc-14_0
-    #SQLITE3_ROOT: C:\Program Files\sqlite
+    
     PYTHON_ROOT: C:\Python36-x64
     PYTHON_VERSION: 3.6
-    #GSL_INCLUDEDIR: C:\Program Files\gsl
-    #GSL_LIBDIR: C:\Program Files\gsl
+    
     MINICONDA: C:\Miniconda36-x64
     SWIG_ROOT:
     
@@ -65,7 +21,7 @@ install:
   - cmd: >-
         cd C:\
         
-        IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg ) ELSE ( echo VCPKG is cached )
+        IF NOT EXIST c:\vcpkg\ ( git clone https://github.com/Microsoft/vcpkg/tree/517b3fabbbb713d7483a62f71446623d80d04e97 ) ELSE ( echo VCPKG is cached )
         
         cd vcpkg        
         
@@ -111,7 +67,8 @@ artifacts:
     name: installer
     
 cache: 
-- C:\vcpkg\
+- C:\vcpkg\installed\x64-windows
+- C:\vcpkg\packages
 - C:\Miniconda36-x64
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
