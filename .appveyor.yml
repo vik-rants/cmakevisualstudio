@@ -29,8 +29,6 @@ install:
         
         git clone -n https://github.com/Microsoft/vcpkg.git
         
-        cd C:\
-        
         powershell -exec bypass scripts\bootstrap.ps1
         
         .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
