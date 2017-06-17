@@ -26,7 +26,7 @@ install:
         
         cd vcpkg
         
-        IF NOT EXIST c:\vcpkg\ (git checkout 517b3fabbbb713d7483a62f71446623d80d04e97)
+        git checkout 517b3fabbbb713d7483a62f71446623d80d04e97
         
         powershell -exec bypass scripts\bootstrap.ps1
         
@@ -73,8 +73,8 @@ artifacts:
     name: installer
     
 cache: 
-- C:\vcpkg\installed\x64-windows
-- C:\vcpkg\packages
+#- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\packages
 - C:\Miniconda36-x64\pkgs
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
