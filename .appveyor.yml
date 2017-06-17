@@ -22,12 +22,8 @@ install:
   - cmd: >-
         cd C:\
         
-        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git) ELSE ( echo VCPKG is cached )
-        
-        cd vcpkg
-        
-        git checkout 517b3fabbbb713d7483a62f71446623d80d04e97
-        
+        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97) ELSE ( echo VCPKG is cached )
+                
         powershell -exec bypass scripts\bootstrap.ps1
         
         .\vcpkg integrate install
@@ -73,7 +69,7 @@ artifacts:
     name: installer
     
 cache: 
-- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\installed\x64-windows
 #- C:\vcpkg\packages
 #- C:\vcpkg\buildtrees
 #- C:\vcpkg\ports
