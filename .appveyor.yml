@@ -69,11 +69,12 @@ artifacts:
     name: installer
     
 cache: 
-#- C:\vcpkg\installed\x64-windows
+- C:\vcpkg\installed\x64-windows
 #- C:\vcpkg\packages
 #- C:\vcpkg\buildtrees
 #- C:\vcpkg\ports
-- C:\Miniconda36-x64\pkgs
+- C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
+- C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
 
