@@ -67,7 +67,7 @@ build:
 artifacts:
   - path: build\Release\hello.exe
     name: installer
-    
+ #####   
 cache: 
 - C:\vcpkg\installed\x64-windows
 #- C:\vcpkg\packages
