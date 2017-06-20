@@ -22,7 +22,7 @@ install:
   - cmd: >-
         cd C:\
         
-        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( echo VCPKG is cached )
+        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
                         
         .\vcpkg integrate install
         
@@ -67,10 +67,10 @@ artifacts:
     name: installer
  #####   
 cache: 
-#- C:\vcpkg\installed\x64-windows
-#- C:\vcpkg\packages
-#- C:\vcpkg\buildtrees
-#- C:\vcpkg\ports
+- C:\vcpkg\installed\x64-windows
+- C:\vcpkg\packages
+- C:\vcpkg\buildtrees
+- C:\vcpkg\ports
 - C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
 - C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
 - C:\ProgramData\chocolatey\bin
