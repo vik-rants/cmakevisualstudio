@@ -28,7 +28,11 @@ install:
   
         
   # To install SWIG in home directory using choco
-  - ps: choco install -y swig > $null
+  - ps: if (-not(Test-Path C:\ProgramData\chocolatey))
+        {
+         choco install -y swig > $null
+         choco install -y sqlite --version 3.19.2
+        }
   
   # Using MINICONDA pre installed to setup  pyqt and numpy
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
@@ -38,7 +42,7 @@ install:
   # Using MINICONDA pre installed to setup  NumPy
   - conda install --yes --quiet numpy=1.12.1
   #- cmd: which pkg-config
-  - ps: choco install -y sqlite --version 3.19.2
+  #- ps: choco install -y sqlite --version 3.19.2
   
   
 
@@ -50,7 +54,7 @@ before_build:
   #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
   - ps: ls "C:/Miniconda36-x64/pkgs"
   #- ps: ls "C:/Program Files/gsl"
-  - ps: ls "C:/vcpkg"
+  - ps: ls "C:/vcpkg/scripts"
    
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
@@ -65,10 +69,11 @@ artifacts:
     name: installer
  #####   
 cache: 
-- C:\vcpkg\installed\x64-windows
-- C:\vcpkg\packages
-- C:\vcpkg\buildtrees
-- C:\vcpkg\ports
+#- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\packages
+#- C:\vcpkg\buildtrees
+#- C:\vcpkg\ports
+#- C:\vcpkg\scripts
 - C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
 - C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
 - C:\ProgramData\chocolatey\bin
