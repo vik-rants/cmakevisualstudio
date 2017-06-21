@@ -28,7 +28,7 @@ install:
   
         
   # To install SWIG in home directory using choco
-  - ps: if (-not(Test-Path C:\ProgramData\chocolatey))
+  - ps: if (-not(Test-Path C:\ProgramData\chocolatey\bin\))
         {
          choco install -y swig > $null
          choco install -y sqlite --version 3.19.2
@@ -52,8 +52,8 @@ before_build:
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
   
   #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
-  - ps: ls "C:/Miniconda36-x64/pkgs"
-  #- ps: ls "C:/Program Files/gsl"
+  #- ps: ls "C:/Miniconda36-x64/pkgs"
+  - ps: ls "C:/ProgramData/chocolatey"
   - ps: ls "C:/vcpkg/scripts"
    
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
@@ -69,11 +69,11 @@ artifacts:
     name: installer
  ########
 cache: 
-#- C:\vcpkg\installed\x64-windows
-#- C:\vcpkg\packages
-#- C:\vcpkg\buildtrees
-#- C:\vcpkg\ports
-#- C:\vcpkg\scripts
+- C:\vcpkg\installed\x64-windows
+- C:\vcpkg\packages
+- C:\vcpkg\buildtrees
+- C:\vcpkg\ports
+- C:\vcpkg\scripts
 - C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
 - C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
 - C:\ProgramData\chocolatey\bin
