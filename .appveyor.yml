@@ -55,8 +55,8 @@ before_build:
   
   #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
   #- ps: ls "C:/Miniconda36-x64/pkgs"
-  - ps: ls "C:/ProgramData/chocolatey"
-  - ps: ls "C:/vcpkg/scripts"
+  #- ps: ls "C:/ProgramData/chocolatey"
+  - ps: ls "C:/vcpkg"
    
   #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
   - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
