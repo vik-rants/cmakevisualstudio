@@ -71,13 +71,18 @@ artifacts:
     name: installer
  ########
 cache: 
-- C:\vcpkg\installed\x64-windows
-- C:\vcpkg\packages
-- C:\vcpkg\buildtrees
-- C:\vcpkg\ports
-- C:\vcpkg\scripts
-- C:\vcpkg\vcpkg.exe
-- C:\vcpkg\.vcpkg-root
+#- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\packages
+#- C:\vcpkg\buildtrees
+#- C:\vcpkg\ports
+#- C:\vcpkg\scripts
+#- C:\vcpkg\toolsrc
+#- C:\vcpkg\triplets
+#- C:\vcpkg\vcpkg.exe
+#- C:\vcpkg\.vcpkg-root
+#- C:\vcpkg\.gitattributes
+#- C:\vcpkg\.gitignore
+#- C:\vcpkg\bootstrap-vcpkg.bat
 
 #- C:\vcpkg
 #- C:\vcpkg\download -> .appveyor.yml
