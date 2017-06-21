@@ -22,11 +22,9 @@ install:
   - cmd: >-
         cd C:\
         
-        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
+        IF NOT EXIST C:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
                         
-        .\vcpkg integrate install
-        
-        .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
+        IF NOT EXIST C:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
   
         
   # To install SWIG in home directory using choco
