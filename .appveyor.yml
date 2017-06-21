@@ -76,8 +76,8 @@ cache:
 - C:\vcpkg\scripts
 - C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
 - C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib  
+#- C:\ProgramData\chocolatey\bin
+#- C:\ProgramData\chocolatey\lib  
 
 deploy:
   - provider: GitHub
