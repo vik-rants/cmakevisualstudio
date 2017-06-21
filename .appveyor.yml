@@ -28,9 +28,7 @@ install:
         
         powershell -exec bypass scripts\bootstrap.ps1
         
-        .\vcpkg integrate install
-        
-        .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
+        IF NOT EXIST c:\vcpkg\ (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
   
   
         
