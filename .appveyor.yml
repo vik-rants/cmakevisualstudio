@@ -9,111 +9,48 @@ environment:
     PYTHON_ROOT: C:\Python36-x64
     PYTHON_VERSION: 3.6
     
-    MINICONDA: C:\Miniconda36-x64
-    SWIG_ROOT:
-    
+    MINICONDA: C:\Miniconda36-x64    
  
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
-  
-  ###USING VCPKG FOR INSTALLING STANDARD LIBRARIES##
-  #
-  
-  #- cmd: >-
-  #      
-  #      cd C:\
-  #      
-  #      IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
-  #              
-  #      
-  #      IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows-rel eigen3:x64-windows-rel boost:x64-windows-rel gsl:x64-windows-rel)
-  
-  
-  #cmd: IF NOT EXIST c:\vcpkg\ (cd c:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass bootstrap-vcpkg.bat) ELSE ( cd vcpkg && echo VCPKG is cached )
-  
-  #- cmd: IF NOT EXIST c:\vcpkg (md c:\vcpkg && cd c:\vcpkg && git init && git remote add origin https://github.com/Microsoft/vcpkg.git && git fetch --depth 1 origin 517b3fabbbb713d7483a62f71446623d80d04e97 && git reset --hard FETCH_HEAD && powershell -exec bypass scripts\bootstrap.ps1)
-  
-  
-  #- cmd: IF NOT EXIST C:\vcpkg\ (cd C:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout df3f73d8256e549ad43efd0a84cd3691d91c9c10 && bootstrap-vcpkg.bat && rm -rf .git && cd %APPVEYOR_BUILD_FOLDER%)
-  #- ps: Start-FileDownload 'https://github.com/Microsoft/vcpkg/archive/517b3fabbbb713d7483a62f71446623d80d04e97.zip' && 
-  #- cmd: c:\vcpkg\vcpkg integrate install
-  #- C:\vcpkg\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
-        
-  # To install SWIG in home directory using choco
+
+  - ps: Start-FileDownload 'https://github.com/seweber/pairinteraction-build-dependencies/releases/download/v64/vcpkg-export.zip'
+  - cmd: 7z x -y vcpkg-export.zip > nul
+  - cmd: move vcpkg-export-* vcpkg-export
+
   - ps: choco install -y swig --version 3.0.9
   - ps: choco install -y sqlite --version 3.19.2
-  # 
-         
-  # Using MINICONDA pre installed to setup  pyqt and numpy
+
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
-  
-  #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  # Using MINICONDA pre installed to setup  NumPy
-  
-  #- conda install --yes --quiet pyqt=5.6.0 numpy=1.12.1
-  #- conda clean --yes --all
-  # 
-  #- cmd: which pkg-config
-    
+  - cmd: conda install -y -q pyqt=5.6.0 numpy=1.12.1
 
-#before_build:
-#  - cmd: cd C:/projects/cmakevisualstudio
-#  - cmd: md build && cd build
-  #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
-  
-  #- ps: ls "C:/Miniconda36-x64/pkgs/pyqt-5.6.0-py36_2/Library/bin"
-  #- ps: ls "C:/Miniconda36-x64/pkgs"
-  #- ps: ls "C:/ProgramData/chocolatey"
-  #- ps: ls "C:/vcpkg"
-   
-  #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
-  #TODO - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
+before_build:
+  - cmd: md build && cd build
+  - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=vcpkg-export\scripts\buildsystems\vcpkg.cmake"
 
-#TODO build:
-#  project: build\hello.vcxproj
-#  parallel: true
-#  verbosity: minimal
+build:
+  project: build\hello.vcxproj
+  parallel: true
+  verbosity: minimal
 
-build: off
+artifacts:
+  - path: build\Release\hello.exe
+    name: installer
 
-#artifacts:
-#  - path: build\Release\hello.exe
-#    name: installer
- ########
-cache: 
-#- C:\vcpkg\installed\x64-windows
-#- C:\vcpkg\packages
-#- C:\vcpkg\buildtrees
-#- C:\vcpkg\ports
-#- C:\vcpkg\scripts
-#- C:\vcpkg\toolsrc
-#- C:\vcpkg\triplets
-#- C:\vcpkg\vcpkg.exe
-#- C:\vcpkg\.vcpkg-root
-#- C:\vcpkg\.gitattributes
-#- C:\vcpkg\.gitignore
-#- C:\vcpkg\bootstrap-vcpkg.bat
-
-#- C:\vcpkg
-#- C:\vcpkg\download -> .appveyor.yml
-#- C:\Miniconda36-x64\pkgs
+cache:
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib
-#-> .appveyor.yml
 
-#before_cache:
-#- rm -f C:\vcpkg\ports\Downloads
-
-#deploy:
-#  - provider: GitHub
-#    release: $(APPVEYOR_REPO_TAG_NAME)
-#    auth_token: $(GH_TOKEN)
-#    artifact:  installer
-#    prerelease: true
-#    force_update: true
-#    on:
-#      appveyor_repo_tag: true  
+deploy:
+  - provider: GitHub
+    release: $(APPVEYOR_REPO_TAG_NAME)
+    auth_token: $(GH_TOKEN)
+    artifact:  installer
+    prerelease: true
+    force_update: true
+    on:
+      appveyor_repo_tag: true  
   
   
 
