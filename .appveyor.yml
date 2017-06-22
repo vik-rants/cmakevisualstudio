@@ -27,13 +27,18 @@ install:
   #      IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
   #              
   #      
-  #      IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
+  #      IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows-rel eigen3:x64-windows-rel boost:x64-windows-rel gsl:x64-windows-rel)
   
   
-  #cmd: IF NOT EXIST c:\vcpkg\ (cd c:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
+  #cmd: IF NOT EXIST c:\vcpkg\ (cd c:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass bootstrap-vcpkg.bat) ELSE ( cd vcpkg && echo VCPKG is cached )
   
-  - cmd: IF NOT EXIST c:\vcpkg (md c:\vcpkg && cd c:\vcpkg && git init && git remote add origin https://github.com/Microsoft/vcpkg.git && git fetch --depth 1 origin 517b3fabbbb713d7483a62f71446623d80d04e97 && git reset --hard FETCH_HEAD )
-  #- cmd: .\vcpkg integrate install
+  #- cmd: IF NOT EXIST c:\vcpkg (md c:\vcpkg && cd c:\vcpkg && git init && git remote add origin https://github.com/Microsoft/vcpkg.git && git fetch --depth 1 origin 517b3fabbbb713d7483a62f71446623d80d04e97 && git reset --hard FETCH_HEAD && powershell -exec bypass scripts\bootstrap.ps1)
+  
+  
+  - cmd: IF NOT EXIST C:\vcpkg\ (cd C:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout df3f73d8256e549ad43efd0a84cd3691d91c9c10 && bootstrap-vcpkg.bat && rm -rf .git && cd %APPVEYOR_BUILD_FOLDER%)
+  #- ps: Start-FileDownload 'https://github.com/Microsoft/vcpkg/archive/517b3fabbbb713d7483a62f71446623d80d04e97.zip' && 
+  #- cmd: c:\vcpkg\vcpkg integrate install
+  - C:\vcpkg\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
         
   # To install SWIG in home directory using choco
   - ps: choco install -y swig --version 3.0.9
@@ -46,8 +51,7 @@ install:
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   # Using MINICONDA pre installed to setup  NumPy
   
-  - conda install --yes --quiet pyqt=5.6.0
-  - conda install --yes --quiet numpy=1.12.1
+  #- conda install --yes --quiet pyqt=5.6.0 numpy=1.12.1
   #- conda clean --yes --all
   # 
   #- cmd: which pkg-config
@@ -96,7 +100,8 @@ cache:
 #- C:\Miniconda36-x64\pkgs
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib
-#- C:\vcpkg  
+- C:\vcpkg
+#-> .appveyor.yml
 
 #before_cache:
 #- rm -f C:\vcpkg\ports\Downloads
