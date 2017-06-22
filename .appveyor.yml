@@ -35,10 +35,10 @@ install:
   #- cmd: IF NOT EXIST c:\vcpkg (md c:\vcpkg && cd c:\vcpkg && git init && git remote add origin https://github.com/Microsoft/vcpkg.git && git fetch --depth 1 origin 517b3fabbbb713d7483a62f71446623d80d04e97 && git reset --hard FETCH_HEAD && powershell -exec bypass scripts\bootstrap.ps1)
   
   
-  - cmd: IF NOT EXIST C:\vcpkg\ (cd C:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout df3f73d8256e549ad43efd0a84cd3691d91c9c10 && bootstrap-vcpkg.bat && rm -rf .git && cd %APPVEYOR_BUILD_FOLDER%)
+  #- cmd: IF NOT EXIST C:\vcpkg\ (cd C:\ && git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout df3f73d8256e549ad43efd0a84cd3691d91c9c10 && bootstrap-vcpkg.bat && rm -rf .git && cd %APPVEYOR_BUILD_FOLDER%)
   #- ps: Start-FileDownload 'https://github.com/Microsoft/vcpkg/archive/517b3fabbbb713d7483a62f71446623d80d04e97.zip' && 
   #- cmd: c:\vcpkg\vcpkg integrate install
-  - C:\vcpkg\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
+  #- C:\vcpkg\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows
         
   # To install SWIG in home directory using choco
   - ps: choco install -y swig --version 3.0.9
@@ -98,9 +98,8 @@ cache:
 #- C:\vcpkg
 #- C:\vcpkg\download -> .appveyor.yml
 #- C:\Miniconda36-x64\pkgs
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib
-- C:\vcpkg
+- C:\ProgramData\chocolatey\bin -> .appveyor.yml
+- C:\ProgramData\chocolatey\lib -> .appveyor.yml
 #-> .appveyor.yml
 
 #before_cache:
