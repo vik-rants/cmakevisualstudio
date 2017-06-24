@@ -20,32 +20,32 @@ install:
   ###USING VCPKG FOR INSTALLING STANDARD LIBRARIES##
   #
   
-  #- cmd: >-
+  - cmd: >-
         
-   #     cd C:\
+       cd C:\
         
- #       IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
+        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
                 
         
-  #      IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
+       IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
   
   
         
   # To install SWIG in home directory using choco
-  #- ps: choco install -y swig > $null
-  #- ps: choco install -y sqlite --version 3.19.2
+  - ps: choco install -y swig > $null
+  - ps: choco install -y sqlite --version 3.19.2
          
   # Using MINICONDA pre installed to setup  pyqt and numpy
-  #- cmd: call C:\Miniconda36-x64\Scripts\activate.bat
-  #- cmd: >-
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  - cmd: >-
         
-   #     IF NOT EXIST C:\Miniconda36-x64\pkgs (conda install --yes --quiet pyqt=5.6.0 && conda install --yes --quiet numpy=1.12.1)
+        IF NOT EXIST C:\Miniconda36-x64\pkgs (conda install --yes --quiet pyqt=5.6.0 && conda install --yes --quiet numpy=1.12.1)
     
   
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  #- conda install --yes --quiet pyqt=5.6.0
+  - conda install --yes --quiet pyqt=5.6.0
   # Using MINICONDA pre installed to setup  NumPy
-  #- conda install --yes --quiet numpy=1.12.1
+  - conda install --yes --quiet numpy=1.12.1
   #- cmd: which pkg-config
     
 
@@ -87,8 +87,8 @@ cache:
 
 #- C:\vcpkg
 #- C:\vcpkg\download -> .appveyor.yml
-- C:\Miniconda36-x64\pkgs\numpy-1.12.1-py36_0 
-- C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
+- C:\Miniconda36-x64 
+#- C:\Miniconda36-x64\pkgs\pyqt-5.6.0-py36_2
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
 #before_cache:
