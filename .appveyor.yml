@@ -37,11 +37,15 @@ install:
          
   # Using MINICONDA pre installed to setup  pyqt and numpy
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  - cmd: >-
+        
+        IF NOT EXIST C:\Miniconda36-x64\pkgs (conda install --yes --quiet pyqt=5.6.0 && conda install --yes --quiet numpy=1.12.1)
+    
   
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  - conda install --yes --quiet pyqt=5.6.0
+  #- conda install --yes --quiet pyqt=5.6.0
   # Using MINICONDA pre installed to setup  NumPy
-  - conda install --yes --quiet numpy=1.12.1
+  #- conda install --yes --quiet numpy=1.12.1
   #- cmd: which pkg-config
     
 
@@ -68,18 +72,18 @@ artifacts:
     name: installer
  ########
 cache: 
-#- C:\vcpkg\installed\x64-windows
-#- C:\vcpkg\packages
-#- C:\vcpkg\buildtrees
-#- C:\vcpkg\ports
-#- C:\vcpkg\scripts
-#- C:\vcpkg\toolsrc
-#- C:\vcpkg\triplets
-#- C:\vcpkg\vcpkg.exe
-#- C:\vcpkg\.vcpkg-root
-#- C:\vcpkg\.gitattributes
-#- C:\vcpkg\.gitignore
-#- C:\vcpkg\bootstrap-vcpkg.bat
+- C:\vcpkg\installed\x64-windows
+- C:\vcpkg\packages
+- C:\vcpkg\buildtrees
+- C:\vcpkg\ports
+- C:\vcpkg\scripts
+- C:\vcpkg\toolsrc
+- C:\vcpkg\triplets
+- C:\vcpkg\vcpkg.exe
+- C:\vcpkg\.vcpkg-root
+- C:\vcpkg\.gitattributes
+- C:\vcpkg\.gitignore
+- C:\vcpkg\bootstrap-vcpkg.bat
 
 #- C:\vcpkg
 #- C:\vcpkg\download -> .appveyor.yml
