@@ -86,7 +86,7 @@ cache:
 #- C:\vcpkg\download -> .appveyor.yml
 - C:\Miniconda36-x64\include 
 - C:\Miniconda36-x64\Lib
-- C:\Miniconda36-x64\pkgs
+#- C:\Miniconda36-x64\pkgs
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
 #before_cache:
