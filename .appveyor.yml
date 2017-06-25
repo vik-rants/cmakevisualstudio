@@ -37,6 +37,7 @@ install:
   - cmd: >-
         
         IF NOT EXIST C:\Miniconda36-x64\Library\bin (conda install --yes --quiet pyqt=5.6.0)
+        
         IF NOT EXIST C:\Miniconda36-x64\Lib\site-packages\numpy (conda install --yes --quiet numpy=1.12.1)
     
   
