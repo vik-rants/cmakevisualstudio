@@ -36,7 +36,8 @@ install:
   - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
   - cmd: >-
         
-        IF NOT EXIST C:\Miniconda36-x64\pkgs (conda install --yes --quiet pyqt=5.6.0 && conda install --yes --quiet numpy=1.12.1)
+        IF NOT EXIST C:\Miniconda36-x64\Library\bin (conda install --yes --quiet pyqt=5.6.0)
+        IF NOT EXIST C:\Miniconda36-x64\Lib\site-packages\numpy (conda install --yes --quiet numpy=1.12.1)
     
   
   #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
@@ -84,9 +85,10 @@ cache:
 
 #- C:\vcpkg
 #- C:\vcpkg\download -> .appveyor.yml
-- C:\Miniconda36-x64\include 
+- C:\Miniconda36-x64\python.exe 
+- C:\Miniconda36-x64\Library\bin
+- C:\Miniconda36-x64\libs
 - C:\Miniconda36-x64\Lib
-#- C:\Miniconda36-x64\pkgs
 - C:\ProgramData\chocolatey\bin
 - C:\ProgramData\chocolatey\lib  
 #before_cache:
