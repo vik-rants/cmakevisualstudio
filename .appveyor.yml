@@ -41,11 +41,7 @@ install:
         IF NOT EXIST C:\Miniconda36-x64\Lib\site-packages\numpy (conda install --yes --quiet numpy=1.12.1)
     
   
-  #- "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  #- conda install --yes --quiet pyqt=5.6.0
-  # Using MINICONDA pre installed to setup  NumPy
-  #- conda install --yes --quiet numpy=1.12.1
-  #- cmd: which pkg-config
+ 
     
 
 before_build:
