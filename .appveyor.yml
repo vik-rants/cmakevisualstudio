@@ -63,25 +63,25 @@ artifacts:
     name: installer
  ########
 cache: 
-- C:\vcpkg\installed\x64-windows
-- C:\vcpkg\packages
-- C:\vcpkg\buildtrees
-- C:\vcpkg\ports
-- C:\vcpkg\scripts
-- C:\vcpkg\toolsrc
-- C:\vcpkg\triplets
-- C:\vcpkg\vcpkg.exe
-- C:\vcpkg\.vcpkg-root
-- C:\vcpkg\.gitattributes
-- C:\vcpkg\.gitignore
-- C:\vcpkg\bootstrap-vcpkg.bat
+#- C:\vcpkg\installed\x64-windows
+#- C:\vcpkg\packages
+#- C:\vcpkg\buildtrees
+#- C:\vcpkg\ports
+#- C:\vcpkg\scripts
+#- C:\vcpkg\toolsrc
+#- C:\vcpkg\triplets
+#- C:\vcpkg\vcpkg.exe
+#- C:\vcpkg\.vcpkg-root
+#- C:\vcpkg\.gitattributes
+#- C:\vcpkg\.gitignore
+#- C:\vcpkg\bootstrap-vcpkg.bat
 
-- C:\Miniconda36-x64\python.exe 
-- C:\Miniconda36-x64\Library\bin\pyuic5.bat
-- C:\Miniconda36-x64\libs
-- C:\Miniconda36-x64\Lib
-- C:\ProgramData\chocolatey\bin
-- C:\ProgramData\chocolatey\lib  
+#- C:\Miniconda36-x64\python.exe 
+#- C:\Miniconda36-x64\Library\bin\pyuic5.bat
+#- C:\Miniconda36-x64\libs
+#- C:\Miniconda36-x64\Lib
+#- C:\ProgramData\chocolatey\bin
+#- C:\ProgramData\chocolatey\lib  
 
 deploy:
   - provider: GitHub
