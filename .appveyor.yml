@@ -5,53 +5,31 @@ platform: x64
 configuration: Release
 
 environment:
-    
-    PYTHON_ROOT: C:\Python36-x64
     PYTHON_VERSION: 3.6
-    
-    MINICONDA: C:\Miniconda36-x64
-    SWIG_ROOT:
-    
+    PYTHON_ROOT: C:\Python36-x64
+    MINICONDA: C:\Miniconda36-x64    
  
 install:
   - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
-  
-  ###USING VCPKG FOR INSTALLING STANDARD LIBRARIES##
-  
-  - cmd: >-
-        cd C:\
-        
-        IF NOT EXIST c:\vcpkg\ (git clone https://github.com/Microsoft/vcpkg.git && cd vcpkg && git checkout 517b3fabbbb713d7483a62f71446623d80d04e97 && powershell -exec bypass scripts\bootstrap.ps1) ELSE ( cd vcpkg && echo VCPKG is cached )
-        
-        IF NOT EXIST c:\vcpkg\packages (.\vcpkg integrate install && .\vcpkg install sqlite3:x64-windows eigen3:x64-windows boost:x64-windows gsl:x64-windows)
-  
-  
-        
-  # To install SWIG in home directory using choco
-  - ps: choco install -y swig > $null
+
+  - ps: choco install -y swig --version 3.0.9
   - ps: choco install -y sqlite --version 3.19.2
-         
-  # Using MINICONDA pre installed to setup  pyqt and numpy
-  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
-  - cmd: >-
-        
-        IF NOT EXIST C:\Miniconda36-x64\Library\bin (conda install --yes --quiet pyqt=5.6.0)
-        
-        IF NOT EXIST C:\Miniconda36-x64\Lib\site-packages\numpy (conda install --yes --quiet numpy=1.12.1)
-    
   
- 
-    
+  - ps: Start-FileDownload 'https://github.com/seweber/pairinteraction-build-dependencies/releases/download/v110/cpp-libraries-windows-x86_64.zip'
+  - cmd: 7z x -y cpp-libraries-windows-x86_64.zip > nul
+
+  - ps: Start-FileDownload 'https://github.com/seweber/pairinteraction-build-dependencies/releases/download/v110/python-packages-windows_x86_64.zip'
+  - cmd: 7z x -y python-packages-windows_x86_64.zip > nul
+  - cmd: call C:\Miniconda36-x64\Scripts\activate.bat
+  - cmd: conda config --prepend channels file:///%APPVEYOR_BUILD_FOLDER%/conda-export
+  - cmd: conda install -y -q pairinteraction-dependencies
+
 
 before_build:
-  - cmd: cd C:/projects/cmakevisualstudio
   - cmd: md build && cd build
-  #- cmd: cmake -G "Visual Studio 14 2015 Win64" ..
-  - ps: ls "C:/vcpkg"
-   
-  #- cmd: cmake -G "Visual Studio 14 2015 Win64" -DEIGEN3_INCLUDE_DIR=C:\projects\eigen-eigen-67e894c6cd8f\ ..
-  - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
+  - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=vcpkg-export\scripts\buildsystems\vcpkg.cmake"
+
 
 build:
   project: build\hello.vcxproj
@@ -61,27 +39,11 @@ build:
 artifacts:
   - path: build\Release\hello.exe
     name: installer
- ########
-cache: 
-#- C:\vcpkg\installed\x64-windows
-#- C:\vcpkg\packages
-#- C:\vcpkg\buildtrees
-#- C:\vcpkg\ports
-#- C:\vcpkg\scripts
-#- C:\vcpkg\toolsrc
-#- C:\vcpkg\triplets
-#- C:\vcpkg\vcpkg.exe
-#- C:\vcpkg\.vcpkg-root
-#- C:\vcpkg\.gitattributes
-#- C:\vcpkg\.gitignore
-#- C:\vcpkg\bootstrap-vcpkg.bat
 
-#- C:\Miniconda36-x64\python.exe 
-#- C:\Miniconda36-x64\Library\bin\pyuic5.bat
-#- C:\Miniconda36-x64\libs
-#- C:\Miniconda36-x64\Lib
-#- C:\ProgramData\chocolatey\bin
-#- C:\ProgramData\chocolatey\lib  
+cache:
+- C:\ProgramData\chocolatey\bin
+- C:\ProgramData\chocolatey\lib
+
 
 deploy:
   - provider: GitHub
@@ -92,7 +54,3 @@ deploy:
     force_update: true
     on:
       appveyor_repo_tag: true  
-  
-  
-
- 
