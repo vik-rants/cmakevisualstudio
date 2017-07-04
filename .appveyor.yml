@@ -27,6 +27,7 @@ install:
 
 
 before_build:
+  - cmd: ls C:\Program Files (x86)\NSIS  
   - cmd: md build && cd build
   - cmd: cmake -G "Visual Studio 14 2015 Win64" .. -DCMAKE_TOOLCHAIN_FILE=vcpkg-export\scripts\buildsystems\vcpkg.cmake"
 
